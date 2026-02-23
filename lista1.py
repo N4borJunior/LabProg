@@ -41,17 +41,31 @@ def q5():
 #   antecessor e o seu sucessor.
 def q6():
     num = int(input('Digite um número inteiro: '))
+    print(f'Antecessor de {num} é {num - 1}')
+    print(f'Sucessor de {num} é {num + 1}')
 
-    int(print(f'O antecessor de {num} é {num-1}, e o sucessor é {num+1}'))
-
-q6()
+#q6()
 
 #7. Faça um programa que leia o nome o endereço e o telefone de
 #   um cliente e ao final, imprima esses dados.
+def q7():
+    nome = input('Digite seu nome: ').title().strip()
+    endereço = input('Digite seu endereço: ')
+    telefone = input('Digite seu telefone: ')
+
+    print (f'\nNome: {nome}\nEndereço: {endereço}\nTelefone: {telefone}')
+    
+#q7()
 
 #8. Faça um programa que leia dois números inteiros e imprima a
 #   subtração deles.
+def q8():
+    num1 = int(input('Digite o 1º número: '))
+    num2 = int(input('Digite o 2º número: '))
 
+    print(f'A subtração de {num1} e {num2} é {num1 - num2}')
+
+q8()
 #9. Faça um programa que leia um número real e imprima ¼ deste número.
 
 #10. Faça um programa que leia três números reais e calcule a
