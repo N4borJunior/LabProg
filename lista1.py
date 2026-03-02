@@ -16,42 +16,72 @@ def q2():
 
 #3. Faça um programa que imprima a média aritmética entre os números 5, 8, 12.
 def q3():
-    media = (5+8+12)/3
-    print(f'5+8+12)/3 = {media:.2}')
-
+    try:
+        media = (5+8+12)/3
+        print(f'(5+8+12)/3 = {media:.2}')
+    except ZeroDivisionError:
+        print('Cálculo inválido! Não há como dividir por 0')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
 
 
 #4. Faça um programa que leia e imprima um número inteiro.
 def q4():
-    num = int(input('Digite um número: '))
-    print(f'Você digitou o número: {num}')
+    num = 0
+    try:
+        num = int(input('Digite um número: '))
+        print(f'Você digitou o número: {num}')
+    except ValueError:
+        print('O valor digitado é inválido! Apenas números inteiros são aceitos. Tente novamente.')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
 
 
 
 #5. Faça um programa que leia dois números reais e os imprima.
 def q5():
-    x = float(input('Digite um número real: '))
-    y = float(input('Digite outro número real: '))
-
-    print(f'Números digitados: {x} e {y}')
+    x = 0
+    y = 0
+    try:
+        x = float(input('Digite um número real: '))
+        y = float(input('Digite outro número real: '))
+        print(f'Números digitados: {x} e {y}')
+    except ValueError:
+        print('O valor digitado é inválido! Apenas números reais são aceitos. Tente novamente.')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
+    
 
 
 
 #6. Faça um programa que leia um número inteiro e imprima o seu
 #   antecessor e o seu sucessor.
 def q6():
-    num = int(input('Digite um número inteiro: '))
-    print(f'Antecessor de {num} é {num - 1}')
-    print(f'Sucessor de {num} é {num + 1}')
+    try:
+        num = int(input('Digite um número inteiro: '))
+        print(f'Antecessor de {num} é {num - 1}')
+        print(f'Sucessor de {num} é {num + 1}')
+    except ValueError:
+        print('O valor digitado é inválido! Apenas números inteiros são aceitos. Tente novamente.')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
+
+
 
 
 
 #7. Faça um programa que leia o nome o endereço e o telefone de
 #   um cliente e ao final, imprima esses dados.
 def q7():
-    nome = input('Digite seu nome: ').title().strip()
-    endereço = input('Digite seu endereço: ')
-    telefone = input('Digite seu telefone: ')
+    try:
+        nome = input('Digite seu nome: ').title().strip()
+        endereço = input('Digite seu endereço: ')
+        telefone = input('Digite seu telefone: ')
+    except ValueError:
+        print('O valor digitado é inválido! Tente novamente.')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
+
 
     print (f'\nNome: {nome}\nEndereço: {endereço}\nTelefone: {telefone}')
     
@@ -60,10 +90,17 @@ def q7():
 #8. Faça um programa que leia dois números inteiros e imprima a
 #   subtração deles.
 def q8():
-    num1 = int(input('Digite o 1º número: '))
-    num2 = int(input('Digite o 2º número: '))
+    try:
+        num1 = int(input('Digite o 1º número: '))
+        num2 = int(input('Digite o 2º número: '))
+        print(f'A subtração de {num1} e {num2} é {num1 - num2}')
+    except ValueError:
+        print('O valor digitado é inválido! Apenas números inteiros são aceitos. Tente novamente.')
+    except:
+        print('Erro desconhecido: Contate o admnistrador do sistema.')
 
-    print(f'A subtração de {num1} e {num2} é {num1 - num2}')
+
+    
 
 
 
