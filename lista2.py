@@ -1,5 +1,5 @@
-Exercícios sobre os comandos de condição em python
-'''
+#Exercícios sobre os comandos de condição em python
+#'''
 
 def exemploSe():
     idade = 18
@@ -37,23 +37,98 @@ def exemploCaso():      # serve apenas para valores conhecidos (poucos) e exatos
 #1. Faça um programa que leia dois valores numéricos inteiros e efetue
 #   a adição, caso o resultado seja maior que 10, apresentá-lo.
 
+def q1():
+    try:
+        num1 = int(input("Digite um número inteiro: "))
+        num2 = int(input("Digite outro número inteiro: "))
+        soma = num1 + num2
+
+        if soma > 10:
+            print(f"O resultado da soma é {soma}")
+
+        else: 
+            print("O resultado da soma é menor ou igual a 10.")
+    
+    except ValueError:
+        print("Valor errado! Somente números inteiros são aceitos. Tente novamente.")
+    
+
 #2. Faça um programa que leia dois valores inteiros e efetue a adição.
 #   Caso o valor somado seja maior que 20, este deverá ser apresentado
 #   somando-se a ele mais 8, caso o valor somado seja menor ou igual a
 #   20, este deverá ser apresentado subtraindo-se 5.
 
+def q2():
+    try:
+        num1 = int(input("Digite um número inteiro para a adição: "))
+        num2 = int(input("Digite um número inteiro para a adição: "))
+        soma = num1 + num2
+
+        if soma > 20:
+            print(f'O resultado da adição de {num1} + {num2} é {soma}. {soma} + 8 é {soma + 8}')
+        else:
+            print(f'O resultado da adição de {num1} + {num2} é {soma}. {soma} - 5 é {soma - 5}')
+    except ValueError:
+        print("Valor errado! Somente números inteiros são aceitos. Tente novamente.")
+
 #3. Faça um programa que leia um número e imprima uma das duas mensagens:
 #   "É múltiplo de 3"ou "Não é múltiplo de 3".
+def q3():
+    try:
+        num = int(input('Digite um número inteiro: '))
+
+        if num % 3 == 0:
+            print(f'O número {num} é múltiplo de 3.')
+        else:
+            print(f'O número {num} não é múltiplo de 3.')
+    except ValueError:
+        print("Valor errado! Somente números inteiros são aceitos. Tente novamente.")
 
 #4. Faça um programa que leia um número e informe se ele é ou não divisível por 5.
 
+def q4():
+    try:
+        num = int(input('Digite um número inteiro: '))
+        
+        if num % 5 == 0:
+            print(f'O número {num} é divisível por 5.')
+        else:
+            print(f'O número {num} não é divisível por 5.')
+    except ValueError:
+        print("Valor errado! Somente números inteiros são aceitos. Tente novamente.")
+        
+
+
 #5. Faça um programa que leia um número e informe se ele é divisível por 3 e por 7.
+
+def q5():
+    try:
+        num = int(input('Digite um número inteiro: '))
+
+        if num % 3 == 0 and num % 7 == 0:
+            print(f'O número {num} é divisível por 3 e por 7.')
+        else:
+            print(f'O número {num} não é divisível por 3 e por 7.')
+    except ValueError:
+        print("Valor errado! Somente números inteiros são aceitos. Tente novamente.")
 
 #6. A prefeitura do Rio de Janeiro abriu uma linha de crédito para os funcionários
 #   estatutários. O valor máximo da prestação não poderá ultrapassar 30% do salário
 #   bruto. Faça um programa que permita entrar com o salário bruto
 #   e o valor da prestação e informar se o empréstimo pode ou não ser concedido.
 
+def q6():
+    try:
+        SBruto = float(input('Informe o seu salário bruto: '))
+        Percentual = float(input('Informe o valor da prestação: '))
+        SMax = SBruto * 0.30
+
+        if Percentual <= SMax:
+            print(f'O empréstimo pode ser concedido. A prestação de {Percentual:.2f} está dentro do limite de 30% (R${SMax}) ')
+        else:
+            print(f'O empréstimo não pode ser concedido. A prestação de {Percentual:.2f} excede o limite de 30% (R${SMax}')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
 #7. Faça um programa que leia um número e indique se o número está compreendido
 #   entre 20 e 50 ou não.
 
