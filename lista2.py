@@ -132,28 +132,142 @@ def q6():
 #7. Faça um programa que leia um número e indique se o número está compreendido
 #   entre 20 e 50 ou não.
 
+def q7():
+    try:
+        num = int(input("Insira um número inteiro: "))
+
+        if num >= 20 and num <= 50:
+            print(f'O número {num} está entre 20 e 50')
+        elif num < 20:
+            print(f'O número {num} é menor que 20')
+        else:
+            print(f'O número {num} é maior que 50')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
+
 #8. Faça um programa que leia um número e imprima uma das mensagens:
 #   "Maior do que 20", "Igual a 20"ou "Menor do que 20".
+
+def q8():
+    try:
+        num = int(input('Insira um número inteiro: '))
+
+        if num > 20:
+            print(f'O número {num} é maior do que 20')
+        elif num < 20:
+            print(f'O número {num} é menor do que 20')
+        else:
+            print(f'O número {num} é igual a 20')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
 
 #9. Faça um programa que permita entrar com o ano de nascimento da pessoa e com o
 #   ano atual. O programa deve imprimir a idade da pessoa. Não se esqueça de
 #   verificar se o ano de nascimento informado é válido.
 
+def q9():
+    try:
+        ano = int(input("Informe o seu ano de nascimento: "))
+        idade = (2026 - ano)
+
+        if ano > 2026:
+            print(f'O ano de {ano} não é válido.')
+        else:
+            print(f'Se você nasceu em {ano}, você tem {idade} anos.')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
+
 #10. Faça um programa que leia três números inteiros e imprima os três em ordem
 #crescente.
 
+def q10():
+    try:
+
+        num1 = int(input('Informe o 1° número inteiro: '))
+        num2 = int(input('Informe o 2° número inteiro: '))
+        num3 = int(input('Informe o 3° número inteiro: '))
+
+        if num1 <= num2 and num1 <= num3:
+            if num2 <= num3:
+                print(num1, num2, num3)
+            else:
+                print(num1, num3, num2)
+        elif num2 <= num1 and num2 <= num3:
+            if num1 <= num3:
+                print(num2, num1, num3)
+            else:
+                print(num2, num3, num1)
+        else:
+            if num1 <= num2:
+                print(num3, num1, num2)
+            else:
+                print(num3, num2, num1)
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
+
+
+
 #11. Faça um programa que leia 3 números e imprima o maior deles.
+
+def q11():
+    try:
+
+        num1 = int(input('Informe 1° número inteiro: '))
+        num2 = int(input('Informe 2° número inteiro: '))
+        num3 = int(input('Informe 3° número inteiro: '))
+
+        if num1 > num2 and num1 > num3:
+            print(f"O maior número digitado é: {num1}")
+        elif num2 > num1 and num2 > num3:
+            print(f"O maior número digitado é: {num2}")
+        else:
+            print(f"O maior número digitado é: {num3}")
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos')
 
 #12. Faça um programa que leia a idade de uma pessoa e informe:
 #• Se é maior de idade
 #• Se é menor de idade
 #• Se é maior de 65 anos
 
+def q12():
+    try:
+        idade = int(input('Informe sua idade: '))
+
+        if idade >= 18 and idade <= 65:
+            print('Maior de idade.') 
+        elif idade < 18:
+            print('Menor de idade.')
+        else:
+            print('Mais de 65 anos')
+    except ValueError:
+        print('Idade inválida! Somente aceitamos em números inteiros')
+
 #13. Faça um programa que permita entrar com o nome, a nota da prova 1 e a nota
 #da prova 2 de um aluno. O programa deve imprimir o nome, a nota da prova 1,
 #a nota da prova 2, a média das notas e uma das mensagens: "Aprovado",
 #"Reprovado"ou "em Prova Final"(a média é 7 para aprovação, menor que 3 para
 #reprovação e as demais em prova final).
+
+def q13():
+    try:
+
+        nome = input("Informe seu nome: ")
+        nota1 = int(input('Informe a nota da prova 1: '))
+        nota2 = int(input('Informe a nota da prova 2: '))
+        média = (nota1 + nota2)/2
+
+        if nota1 < 0 and nota2 > 10 and nota2 < 0 and nota2 > 10:
+            print('Notas inválidas')
+        elif média >= 7:
+            print(f'Aluno: {nome}\nNota da prova 1: {nota1}\nNota da prova 2: {nota2}\nMédia: {média}\nAprovado!!!')
+        elif média < 3:
+            print(f'Aluno: {nome}\nNota da prova 1: {nota1}\nNota da prova 2: {nota2}\nMédia: {média}\nReprovado!!!') 
+        else:
+            print(f'Aluno: {nome}\nNota da prova 1: {nota1}\nNota da prova 2: {nota2}\nMédia: {média}\nEm Prova Final!!!')           
+    except ValueError:
+        print('Nome inválido! Somente aceitamos nomes em texto')
+
 
 #14. Faça um programa que permita entrar com o salário de uma pessoa e imprima o
 #desconto do INSS segundo a tabela seguir:
