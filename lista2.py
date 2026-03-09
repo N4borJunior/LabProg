@@ -365,7 +365,26 @@ def q17():
         valor = 0
 
         if idade <= 10:
-            print(f'Nome: {nome}\nIdade: {idade}\n')
+            valor = 30
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+        elif idade > 10 and idade <= 29:
+            valor = 60
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+        elif idade > 29 and idade <= 45:
+            valor = 120
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+        elif idade > 45 and idade <= 59:
+            valor = 150
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+        elif idade > 59 and idade <= 65:
+            valor = 250
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+        else:
+            valor = 400
+            print(f'Nome: {nome}\nIdade: {idade}\nValor a pagar: R${valor},00')
+    except ValueError:
+        print("Idade ou nomes inválidos! Nomes só são aceitos em texto, e idade somente em inteiros.")
+        
 
 #18. Faça um programa que leia um número inteiro entre 1 e 12 e escreva o mês
 #correspondente. Caso o usuário digite um número fora desse intervalo, deverá
