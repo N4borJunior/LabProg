@@ -253,8 +253,8 @@ def q13():
     try:
 
         nome = input("Informe seu nome: ")
-        nota1 = int(input('Informe a nota da prova 1: '))
-        nota2 = int(input('Informe a nota da prova 2: '))
+        nota1 = float(input('Informe a nota da prova 1: '))
+        nota2 = float(input('Informe a nota da prova 2: '))
         média = (nota1 + nota2)/2
 
         if nota1 < 0 and nota2 > 10 and nota2 < 0 and nota2 > 10:
@@ -277,9 +277,46 @@ def q13():
 #Maior que R$1200,00 e menor ou igual a R$2000,00 25%
 #Maior que R$2000,00 30%
 
+def q14():
+    try:
+        Salário = float(input("Informe o seu salário: "))
+        Desconto = 0.0
+
+        if Salário <= 600.00:
+            Desconto = 0.0
+            print('Faixa: isento')
+        elif Salário > 600.00 and Salário <= 1200.00:
+            Desconto = Salário * 0.20
+            print("Faixa: 20%")
+        elif Salário > 1200.00 and Salário <= 2000.00:
+            Desconto = Salário * 0.25
+            print('Faixa: 25%')
+        else:
+            Desconto = Salário * 0.30
+            print('Faixa: 30%')
+        print(f'Salário bruto: R${Salário:.2f}')
+        print(f'Desconto INSS: R${Desconto:.2f}')
+        print(f'Salário Líquido: R${Salário - Desconto:.2f}')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos. Tente Novamente.')
+
 #15. Um comerciante comprou um produto e quer vendê-lo com um lucro de 45% se o
 #valor da compra for menor que R$20,00, caso contrário, o lucro será de 30%.
 #Faça um programa que leia o valor do produto e imprima o valor da venda.
+
+def q15():
+    try:
+        produto = float(input("Informe o valor do produto: "))
+        Lucro = 0.0
+
+        if produto < 20.00:
+            Lucro = produto * 0.45
+            print(f'O valor de venda do produto com 45% de Lucro é:  R${produto + Lucro:.2f}')
+        else:
+            Lucro = produto * 0.30
+            print(f'O valor de venda do produto com 30% de Lucro é: R${produto + Lucro:.2f}')
+    except ValueError:
+        print('Valor inválido! Somente números reais são aceitos. Tente Novamente.')
 
 #16. A confederação brasileira de natação irá promover eliminatórias para o
 #próximo mundial. Faça um programa que receba a idade de um nadador e imprima
@@ -290,6 +327,23 @@ def q13():
 #Juvenil A 11 - 13 anos
 #Juvenil B 14 - 17 anos
 #Sênior maiores de 18 anos
+
+def q16():
+    try:
+        idade = int(input('Informe a idade do nadador: '))
+
+        if idade >= 5 and idade <= 7:
+            print(f'A Categoria do nadador é Infantil A.')
+        elif idade >= 8 and idade <= 10:
+            print(f'A Categoria do nadador é Infantil B.')
+        elif idade >= 11 and idade <= 13:
+            print(f'A Categoria do nadador é Juvenil A.')
+        elif idade >= 14 and idade <= 17:
+            print(f'A Categoria do nadador é Juvenil B.')
+        else:
+            print(f'A Categoria do nadador é Sênior.')
+    except ValueError:
+        print('Valor Inválido! Somente números inteiros são aceitos. Tente Novamente')
 
 #17. Depois da liberação do governo para as mensalidades dos planos de saúde,
 #as pessoas começaram a fazer pesquisas para descobrir um bom plano, não
@@ -303,6 +357,15 @@ def q13():
 #Acima de 45 até 59 anos R$150,00
 #Acima de 59 até 65 anos R$250,00
 #Maior que 65 anos R$400,00
+
+def q17():
+    try:
+        nome = input('Informe o seu nome: ')
+        idade = int(input('Informe a sua idade: '))
+        valor = 0
+
+        if idade <= 10:
+            print(f'Nome: {nome}\nIdade: {idade}\n')
 
 #18. Faça um programa que leia um número inteiro entre 1 e 12 e escreva o mês
 #correspondente. Caso o usuário digite um número fora desse intervalo, deverá
