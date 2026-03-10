@@ -390,6 +390,17 @@ def q17():
 #correspondente. Caso o usuário digite um número fora desse intervalo, deverá
 #aparecer uma mensagem informando que não existe mês com este número.
 
+def q18():
+    try:
+        mes = int(input("Informe o número do mês desejado: "))
+
+        if mes < 1 and mes > 12:
+            print("Não existe mês com esse número!")
+        elif mes = 1:
+            print("O mês digitado é Janeiro.")
+        elif mes = 2:
+            print("O mês digitado é Fevereiro.")
+
 #19. Em um campeonato nacional de arco-e-flecha, tem-se equipes de três jogadores
 #para cada estado. Sabendo-se que os arqueiros de uma equipe não obtiveram o
 #mesmo número de pontos, criar um programa que informe se uma equipe foi
