@@ -1,6 +1,7 @@
 #Exercícios sobre os comandos de condição em python
 #'''
-
+import random
+from datetime import datetime
 def exemploSe():
     idade = 18
     if idade == 18:  # Se idade for igual a 18
@@ -134,14 +135,12 @@ def q6():
 
 def q7():
     try:
-        num = int(input("Insira um número inteiro: "))
+        num = random.randrange(100)
 
         if num >= 20 and num <= 50:
             print(f'O número {num} está entre 20 e 50')
-        elif num < 20:
-            print(f'O número {num} é menor que 20')
         else:
-            print(f'O número {num} é maior que 50')
+            print(f'O número {num} está fora do intervalo de 20 e 50')
     except ValueError:
         print('Valor inválido! Somente números reais são aceitos')
 
@@ -168,12 +167,13 @@ def q8():
 def q9():
     try:
         ano = int(input("Informe o seu ano de nascimento: "))
-        idade = (2026 - ano)
+        idade = (datetime.now().year - ano)
 
-        if ano > 2026:
-            print(f'O ano de {ano} não é válido.')
-        else:
+        if 1900 <= ano <= datetime.now().year:
+            idade = datetime.now().year - ano
             print(f'Se você nasceu em {ano}, você tem {idade} anos.')
+        else:
+            print('Ano de nascimento inválido')
     except ValueError:
         print('Valor inválido! Somente números reais são aceitos')
 
@@ -394,12 +394,34 @@ def q18():
     try:
         mes = int(input("Informe o número do mês desejado: "))
 
-        if mes < 1 and mes > 12:
-            print("Não existe mês com esse número!")
-        elif mes = 1:
+        if mes == 1:
             print("O mês digitado é Janeiro.")
-        elif mes = 2:
+        elif mes == 2:
             print("O mês digitado é Fevereiro.")
+        elif mes == 3:
+            print("O mês digitado é Março.")
+        elif mes == 4:
+            print("O mês digitado é Abril.")
+        elif mes == 5:
+            print("O mês digitado é Maio.")
+        elif mes == 6:
+            print("O mês digitado é Junho.")
+        elif mes == 7:
+            print("O mês digitado é Julho.")
+        elif mes == 8:
+            print("O mês digitado é Agosto.")
+        elif mes == 9:
+            print("O mês digitado é Setembro.")
+        elif mes == 10:
+            print("O mês digitado é Outubro.")
+        elif mes == 11:
+            print("O mês digitado é Novembro.")
+        elif mes == 12:
+            print("O mês digitado é Dezembro.")
+        else:
+            print("Não há um mês com esse número")
+    except ValueError:
+        print("Valor inválido! Meses só são aceitos em números inteiros.")
 
 #19. Em um campeonato nacional de arco-e-flecha, tem-se equipes de três jogadores
 #para cada estado. Sabendo-se que os arqueiros de uma equipe não obtiveram o
@@ -409,6 +431,38 @@ def q18():
 #• Mostrar esses em ordem decrescente;
 #• Se a soma dos pontos for maior do que 100, imprimir a média aritmética entre eles,
 #  caso contrário, imprimir a mensagem "Equipe desclassificada".
+
+def q19():
+    try:
+        ponto1 = int(input("Informe quantos pontos o Arqueiro número 1° fez: "))
+        ponto2 = int(input("Informe quantos pontos o Arqueiro número 1° fez: "))
+        ponto3 = int(input("Informe quantos pontos o Arqueiro número 1° fez: "))
+        total = ponto1 + ponto2 + ponto3
+        media = total/3
+
+        if ponto1 >= ponto2 and ponto1 >= ponto3:
+            if ponto2 >= ponto3:
+                print(f"Pontos da equipe em ordem decrescente:\n{ponto1}, {ponto2} ,{ponto3}")
+            else:
+                print(f"Pontos da equipe em ordem decrescente:\n{ponto1}, {ponto3} ,{ponto2}")
+        elif ponto2 >= ponto1 and ponto2 >= ponto3:
+            if ponto1 >= ponto3:
+                print(f"Pontos da equipe em ordem decrescente:\n{ponto2}, {ponto1} ,{ponto3}")
+            else:
+                print(f"Pontos da equipe em ordem decrescente:\n{pontos}, {ponto3} ,{ponto1}")
+        else:
+            if ponto1 >= ponto2:
+                print(f"Pontos da equipe em ordem decrescente:\n{pontos3}, {ponto1} ,{ponto2}")
+            else:
+                print(f"Pontos da equipe em ordem decrescente:\n{pontos3}, {ponto2} ,{ponto1}\nPontuação total da equipe:\n{total}")
+
+        if total > 100:
+            print(f"A média da equipe é {media}.")
+        else:
+            print("Equipe desclassificada.")
+
+    except ValueError: 
+        print("Valor inválido!Somente números inteiros são aceitos")
 
 #20. O banco XXX concederá um crédito especial com juros de 2% aos seus clientes de
 #acordo com o saldo médio no último ano. Faça um programa que leia o saldo médio
@@ -421,6 +475,27 @@ def q18():
 #de 1001 a 3000 40% do valor do saldo médio
 #acima de 3001 50% do valor do saldo médio
 
+def q20():
+    try:
+        Smedio = float(input("Informe o salário médio: R$"))
+        credito = 0
+
+        if Smedio >= 0 and Smedio <= 500:
+            credito = 0
+        elif Smedio > 500 and Smedio <= 1000:
+            credito = Smedio*0.30
+        elif Smedio > 1000 and Smedio <= 3000:
+            credito = Smedio*0.40
+        elif Smedio > 3000:
+            credito = Smedio*0.50 
+        else:
+            print("Não é possiver o saldo médio ser menor que 0.") 
+
+        print(f"\nSaldo Médio: R$ {Smedio}")
+        print(f"Valor do crédito: R${credito} ")
+    except ValueError:
+        print("Valor inválido!Somente são aceitos números reais.")
+
 #21. A biblioteca de uma Universidade deseja fazer um programa que leia o nome do
 #livro que será emprestado, o tipo de usuário (professor ou aluno) e possa
 #imprimir um recibo conforme mostrado a seguir. Considerar que o professor
@@ -428,6 +503,21 @@ def q18():
 #• Nome do livro:
 #• Tipo de usuário:
 #• Total de dias:
+
+def q21():
+    try:
+        livro = input("Informe o nome do livro que vai emprestar: ")
+        usuario = input('Informe se você é aluno ou professor: ')
+
+        if usuario = "Aluno" or usuario = "aluno":
+            print(f'Livro Emprestado: {livro}\nTipo de Usuário: {usuario}\nTotal de dias para devolver: 3 dias.')
+        elif usuario = "Professor" or usuario = "professor"
+            print(f'Livro Emprestado: {livro}\nTipo de Usuário: {usuario}\nTotal de dias para devolver: 10 dias.')
+        else:
+            print("Usúario inválido! Informe se é aluno ou professor.")
+    except ValueError:
+        print("Valor inválido!Somente são aceitos nomes em formato de texto")
+     
 
 #22. Construa um programa que leia o percurso em quilômetros, o tipo do carro e
 #informe o consumo estimado de combustível, sabendo-se que um carro tipo A faz
