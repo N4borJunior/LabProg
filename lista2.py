@@ -507,14 +507,24 @@ def q20():
 def q21():
     try:
         livro = input("Informe o nome do livro que vai emprestar: ")
-        usuario = input('Informe se você é aluno ou professor: ')
+        print("Tipo de Usuário: Professor [1], Aluno [2]")
+        usuario = input('Digite o tipo de usuário [1] ou [2]: ')
 
-        if usuario = "Aluno" or usuario = "aluno":
-            print(f'Livro Emprestado: {livro}\nTipo de Usuário: {usuario}\nTotal de dias para devolver: 3 dias.')
-        elif usuario = "Professor" or usuario = "professor"
+        if usuario == "2":
+            dias = 3
+            usuario_str = 'Aluno'
+        elif usuario == "1":
+            dias = 3
+            usuario_str = 'Professor'
             print(f'Livro Emprestado: {livro}\nTipo de Usuário: {usuario}\nTotal de dias para devolver: 10 dias.')
         else:
             print("Usúario inválido! Informe se é aluno ou professor.")
+
+        if dias > 0 and dias < 3:
+            print('\nRecibo do Empréstimo')
+            print(f'Nome do livro: {livro}\nTipo de Usuário: {usuario_str}\nTotal de dias para devolver: {dias} dias.')
+        else:
+            print("Tipo de usuário inválido! Preencha com 1 ou 2.")
     except ValueError:
         print("Valor inválido!Somente são aceitos nomes em formato de texto")
      
@@ -522,6 +532,25 @@ def q21():
 #22. Construa um programa que leia o percurso em quilômetros, o tipo do carro e
 #informe o consumo estimado de combustível, sabendo-se que um carro tipo A faz
 #12 km com um litro de gasolina, um tipo B faz 9 km e o tipo C 8 km por litro.
+
+def q22():
+    try:
+        distancia = int(input("Informe a distância percorrida (Km): "))
+        carro = input("Informe o tipo do carro [A], [B] ou [C]: ")
+
+        if carro == 'A':
+            consumo = distancia/12
+            print(f"O consumo estimado para o carro tipo A é de {consumo:.2f} Litros")
+        elif carro == 'B':
+            consumo = distancia/9
+            print(f"O consumo estimado para o carro tipo B é de {consumo:.2f} Litros")
+        elif carro == 'C':
+            consumo = distancia/8
+            print(f"O consumo estimado para o carro tipo C é de {consumo:.2f} Litros")
+        else:
+            print("Tipo de carro inválido! Escolha entre A, B ou C.")
+    except ValueError:
+        print("Valor inválido! Informe a distancia em números inteiros")
 
 #23. Crie um programa que informe a quantidade total de calorias de uma refeição
 #a partir da escolha do usuário que deverá informar o prato, a sobremesa, e
@@ -531,6 +560,52 @@ def q21():
 #Peixe          230cal Sorvete diet     110cal Suco de laranja   70cal
 #Frango         250cal Mousse diet      170cal Suco de melão     100cal
 #Carne          350cal Mousse chocolate 200cal Refrigerante diet 65cal
+
+def q23():
+    try:
+        print("\nCardápio\nPrato     Sobremesa     Bebida\nVegetariano[1]     Abacaxi[1]     Chá[1]\nPeixe[2]     Sorvete Diet[2]     Suco de Laranja[2]\nFrango[3]     Mousse diet[3]     Suco de melâo[3]\nCarne[4]     Mousse de Chocolate[4]     Refrigerante Diet[4]")
+        prato = input("\nEscolha seu prato de 1-4: ")
+        sobremesa = input("\nEscolha sua sobremesa de 1-4: ")
+        bebida = input("\nEscolha sua bebida de 1-4: ")
+
+        if prato == '1':
+            opçao_prato = 180
+        elif prato == '2':
+            opçao_prato = 230
+        elif prato == '3':
+            opçao_prato = 250
+        elif prato == '4':
+            opçao_prato = 350
+        else:
+            print("Opção inválida! preencha entre 1 e 4")
+
+        if sobremesa == '1':
+            opçao_sobremesa = 75
+        elif sobremesa == '2':
+            opçao_sobremesa = 110
+        elif sobremesa == '3':
+            opçao_sobremesa = 170
+        elif sobremesa == '4':
+            opçao_sobremesa = 200
+        else:
+            print("Opção inválida! preencha entre 1 e 4")
+
+        if bebida == '1':
+            opçao_bebida = 20
+        elif bebida == '1':
+            opçao_bebida = 70
+        elif bebida == '1':
+            opçao_bebida = 100
+        elif bebida == '1':
+            opçao_bebida = 65
+        else:
+            print("Opção inválida! preencha entre 1 e 4")
+
+        calorias = (opçao_prato + opçao_sobremesa + opçao_bebida)
+
+        print(f"\nA quantidade total de calorias das opções escolhidas é de {calorias} cal")
+    except ValueError:
+        print("Valor inválido!Somente são aceitos opções em formato de texto")
 
 #24. A polícia rodoviária resolveu fazer cumprir a lei e vistoriar veículos para
 #cobrar dos motoristas o DUT. Sabendo-se que o mês em que o emplacamento do
