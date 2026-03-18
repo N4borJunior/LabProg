@@ -613,6 +613,44 @@ def q23():
 #faça um programa que, a partir da leitura da placa do carro, informe o mês
 #em que o emplacamento deve ser renovado.
 
+def q24():
+    try:
+        placa = input("Informe a placa do veículo: ")
+        mes = "."
+        if len(placa) < 1:
+            print("Placa inválida!")
+            return
+        
+        Fplaca = placa[-1]
+
+        if not Fplaca.isdigit():
+            print("O final da placa deve ser um número!")
+            return
+
+        if Fplaca == "1" or Fplaca == "2" or Fplaca == "3":
+            mes = "Março"
+        elif Fplaca == "4":
+            mes = "Abril"
+        elif Fplaca == "5":
+            mes = "Maio"
+        elif Fplaca == "6":
+            mes = "Junho"
+        elif Fplaca == "7":
+            mes = "Julho"
+        elif Fplaca == "8":
+            mes = "Agosto"
+        elif Fplaca == "9":
+            mes = "Setembro"
+        elif Fplaca == "0":
+            mes = "Outubro"
+        else:
+            print("Número inválido!")
+
+        print(f"O emplacamento do veículo de final {Fplaca} deve ser renovado até {mes}.")
+
+    except ValueError:
+        print("Valor inválido!Tente novamente")
+
 #25. A prefeitura contratou uma firma especializada para manter os níveis de
 #poluição considerados ideais para um país do 1º mundo. As indústrias,
 #maiores responsáveis pela poluição, foram classificadas em três grupos.
@@ -623,6 +661,22 @@ def q23():
 #0,3 1º grupo
 #0,4 1º e 2º grupos
 #0,5 1º, 2º e 3º grupos
+
+def q25():
+    try:
+        Indice = float(input("Informe o índice de poluição(Ex: 0.5): "))
+    
+        if Indice >= 0.5:
+            print(f"Indice: {Indice}\nIntimação: 1°, 2° e 3° grupos devem suspender as atividades.")
+        elif Indice >= 0.4:
+            print(f"Indice: {Indice}\nIntimação: 1° e 2° grupos devem suspender as atividades.")
+        elif Indice >= 0.3:
+            print(f"Indice: {Indice}\nIntimação: 1° grupo deve suspender as atividades.")
+        else:
+            print("Nível de poluição aceitavel!")
+    except ValueError:
+        print("Valor inválido! Somente números reais são aceitos.")
+        
 
 try:
     opcao = int(input('Digite o número da questão: '))
