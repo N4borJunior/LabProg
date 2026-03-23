@@ -4,6 +4,7 @@ Lista de Exercícios referentes a estruturas de iteração (repetição)
 from util import inputint, inputfloat
 import random
 
+erro = True
 #def exemploPara(): # Quando se sabe a qtde de repetições
     #for c in range(10): #0-9 Baseado em intervalo (inicio e fim)
         #print(c)
@@ -19,15 +20,21 @@ import random
 
 #1.Faça um programa que imprima todos os números de 1 até 100.
 def q1():
-    print("Todos os números de 1 a 100:\n ")
+    print("Todos os números de 1 até 100:\n ")
     for x in range(1, 101):
-        print(c)
+        print(x, end=" ")
     
 
 #2. Faça um programa que imprima todos os números pares de 100 até 1.
-
+def q2():
+    print("Todos os números pares de 100 até 1:\n ")
+    for x in range(100, 1, -2):
+        print(x, end=" ")
 #3. Faça um programa que imprima os múltiplos de 5, no intervalo de 1 até 500.
-
+def q3():
+    print("Todos os múltiplos de 5 no intervalo de 1 até 500:\n ")
+    for x in range(5, 501, 5):
+        print(x, end=" ")
 #4. Faça um programa que permita entrar com o nome, a idade e o sexo de 20
 #pessoas.O programa deve imprimir o nome da pessoa se ela for do sexo masculino
 #e tiver mais de 21 anos.
@@ -288,5 +295,5 @@ while (erro == True):
         erro = False
     except ValueError:
         print('O número da questão deve ser numérico (inteiro)!')
-    except Exception as e:
-        print(e)
+    except Exception as erro:
+        print(erro)

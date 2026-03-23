@@ -1,7 +1,7 @@
 
 def inputint(msg, min=None,max=None):
     erro = True
-    while erro == True:
+    while (erro == True):
         try:
             valor = int(input(msg))
             if min!=None and valor < min:
@@ -12,8 +12,8 @@ def inputint(msg, min=None,max=None):
             return valor
         except ValueError:
             print ('ERRO: Valor informado não é inteiro!')
-        except Exception as e:
-            print(e)
+        except Exception as erro:
+            print(erro)
 
 def inputfloat(msg, min=None,max=None):
     erro = True
@@ -28,6 +28,6 @@ def inputfloat(msg, min=None,max=None):
             return valor
         except ValueError:
             print ('ERRO: Valor informado não é um número real!')
-        except Exception as e:
-            print(e)
+        except Exception as erro:
+            print(erro)
         
