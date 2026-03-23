@@ -1,19 +1,28 @@
 '''
 Lista de Exercícios referentes a estruturas de iteração (repetição)
 '''
-def exemploPara(): # Quando se sabe a qtde de repetições
-    for c in range(10): #0-9 Baseado em intervalo (inicio e fim)
-        print(c)
-    for c in range(1,10): #1-9
-        print(c)
-    for c in range(1,10,2): #1,3,5,7,9
+from util import inputint, inputfloat
+import random
 
-def exemploEnquanto(): # Quando não se sabe quantas iterações serão necessárias
-    opcao=-1
-    while opcao != 0: #baseado em uma condição (True|False)
-        opcao = int(input('Opção: '))
+#def exemploPara(): # Quando se sabe a qtde de repetições
+    #for c in range(10): #0-9 Baseado em intervalo (inicio e fim)
+        #print(c)
+    #for c in range(1,10): #1-9
+        #print(c)
+    #for c in range(1,10,2): #1,3,5,7,9
+        #print(c)
+
+#def exemploEnquanto(): # Quando não se sabe quantas iterações serão necessárias
+    #opcao = -1
+    #while opcao != 0: #baseado em uma condição (True|False)
+        #opcao = int(input('Opção: '))
 
 #1.Faça um programa que imprima todos os números de 1 até 100.
+def q1():
+    print("Todos os números de 1 a 100:\n ")
+    for x in range(1, 101):
+        print(c)
+    
 
 #2. Faça um programa que imprima todos os números pares de 100 até 1.
 
@@ -269,6 +278,15 @@ def exemploEnquanto(): # Quando não se sabe quantas iterações serão necessá
 #analisadas.
 #Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a
 #idade.
-
-questao = int(input('Questão a ser executada: '))
-eval(f'q{questao}()')
+erro = True
+while (erro == True):
+    try:
+        opcao = int(input('Digite o número da questão: '))
+        if opcao < 1 or opcao > 25:
+            raise Exception('Questão inválida, valores devem estar entre 1 e 25')
+        eval(f'q{opcao}()')
+        erro = False
+    except ValueError:
+        print('O número da questão deve ser numérico (inteiro)!')
+    except Exception as e:
+        print(e)
