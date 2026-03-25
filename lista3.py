@@ -42,13 +42,13 @@ def q4():
     try:
         for x in range(1,21):
             nome = input("Informe o nome de uma pessoa: ")
-            idade = random.randrange(100)
+            idade = int(input("Informe a idade dessa pessoa: "))
             sexo = input("Informe o sexo dessa pessoa(Ex: F,M): ").strip().upper()
 
             if sexo == "M" and idade > 21:
                 print(f"Nome do homem com mais de 21 anos: {nome}")
             else:
-                print("Nenhum homem com mais de 21 anos.")
+                print("")
     except ValueError:
         print("Sexo inválido!Informe o sexo com F ou M.")
 
@@ -57,6 +57,18 @@ def q4():
 #5. Sabendo-se que a unidade lógica e aritmética calcula o produto através de somas
 #sucessivas, crie um programa que calcule o produto de dois números inteiros
 #lidos. Suponha que os números lidos sejam positivos.
+def q5():
+    try:
+        num1 = int(input("Digite o primeiro número positivo: "))
+        num2 = int(input("Digite o segundo número positivo: "))
+        produto = 0
+
+        for i in range(num2):
+            produto += num1
+        
+        print(f"O produto é :{produto}")
+    except ValueError:
+        print("Valor inválido! Informe os números em inteiro.")
 
 #6. Crie um programa que imprima os 20 primeiros termos da série de Fibonacci.
 #Observação: os dois primeiros termos desta série são 1 e 1 e os demais são gerados
@@ -64,11 +76,48 @@ def q4():
 #• 1 + 1 = 2, terceiro termo;
 #• 1 + 2 = 3, quarto termo, etc.
 # 1 1 2 3 5 8 13 21
+def q6():
+    num1 = 1
+    num2 = 1
+    
+    print(num1, end=" ")
+    print(num2, end=" ")
+
+    for i in range(3,21):
+        proximo = num1 + num2
+
+        print(proximo, end=" ")
+
+        num1 = num2
+        num2 = proximo
+
 
 #7. Crie um programa que permita entrar com o nome, a nota da
 #prova 1 e da prova 2 de 15 alunos. Ao final, imprimir uma listagem, contendo:
 #nome, nota da prova 1, nota da prova 2, e média das notas de cada aluno. Ao final,
 #imprimir a média geral da turma.
+def q7():
+    try:
+        mediaA = 0
+
+        for i in range(1,16):
+
+            nome = input("Digite seu nome: ")
+            nota1 = float(input("Informe a nota da prova 1: "))
+            nota2 = float(input("Informe a nota da prova 2: "))
+            media = (nota1 + nota2)/2
+            mediaA += media
+        
+            print(f"Nome do aluno: {nome}\nNota da prova 1: {nota1}\nNota da prova 2: {nota2}\nMédia do aluno: {media}\n")
+
+        mediaG = mediaA/15
+        print(f"Média geral da turma: {mediaG}")       
+    except ValueError:
+        print("Valor inválido!Informe as notas em números reais.")    
+            
+        
+        
+
 
 #8. Faça um programa que permita entrar com o nome e o salário bruto de 10 pessoas.
 #Após ler os dados, imprimir o nome e o valor da alíquota do imposto de renda
@@ -77,6 +126,8 @@ def q4():
 #Salário menor que R$1300,00 Isento
 #Salário maior ou igual a R$1300,00 e menor que R$2300,00 10% do salário bruto
 #Salário maior ou igual a R$2300,00 15% do salário bruto
+def q8():
+    try:
 
 #9. No dia da estreia do filme "Procurando Dory", uma grande emissora de TV realizou
 #uma pesquisa logo após o encerramento do filme. Cada espectador respondeu
