@@ -1,10 +1,9 @@
 '''
 Lista de Exercícios referentes a estruturas de iteração (repetição)
 '''
-from util import inputint, inputfloat
+from util import inputint, inputfloat, gerarP
 import random
 
-erro = True
 #def exemploPara(): # Quando se sabe a qtde de repetições
     #for c in range(10): #0-9 Baseado em intervalo (inicio e fim)
         #print(c)
@@ -128,6 +127,28 @@ def q7():
 #Salário maior ou igual a R$2300,00 15% do salário bruto
 def q8():
     try:
+        for i in range(1,11):
+            nome = input("Informe seu nome: ")
+            Sbruto = float(input("Informe seu salário bruto: R$"))
+
+            if Sbruto < 1300:
+                aliquota = "Isento"
+                Imposto = 0.0
+            elif Sbruto >= 1300 and Sbruto < 2300:
+                aliquota = "10%"
+                Imposto = Sbruto * 0.10
+            else:
+                aliquota = "15%"
+                Imposto = Sbruto * 0.15
+
+            print("")
+            print(f"Nome:{nome}\nAlíquota: {aliquota}")
+            if Imposto > 0:
+                print(f"Valor do imposto: R${Imposto:.2f}\n")
+    except ValueError:
+        print("Valor inválido! Tente novamente.")
+                
+
 
 #9. No dia da estreia do filme "Procurando Dory", uma grande emissora de TV realizou
 #uma pesquisa logo após o encerramento do filme. Cada espectador respondeu
@@ -138,6 +159,40 @@ def q8():
 #• A quantidade de pessoas que responderam regular;
 #• A percentagem de pessoas que responderam bom entre todos os expectadores
 #analisados.
+def q9():
+    try:
+        for i in range(1,21):
+            idade = int(input("Informe sua idade: "))
+            opiniao = int(input("Opinião (3-Excelente, 2-Bom, 1-Regular): "))
+            idadeE = 0
+            qtdE = 0
+            qtdR = 0
+            qtdB = 0
+            
+            if opiniao == 3:
+                idadeE += idade
+                qtdE += 1
+            elif opiniao == 2:
+                qtdB += 1
+            elif opiniao == 1:
+                qrtR += 1
+            else:
+                print("Opção inválida!")
+
+        if qtdE > 0:
+            mediaIE = idadeE/qtdE
+        else:
+            mediaIE = 0
+
+        pbom = (qtdB/20)*100
+
+        print("Resultados da pesquisa\n")
+        print(f"\n1.Média de idade de telespectadores que acharam o filme excelente: {mediaIE:.1f}")
+        print(f"2.Quantidade de pessoas que acharam o filme regular: {qtdR:.1f}")
+        print(f"3.A percentagem de telespectadores que acharam o filme bom:{pbom:.1f}")
+    except ValueError:
+        print("Valor inválido!")
+
 
 #10. Em um campeonato Europeu de Volleyball, se inscreveram 30 países. Sabendo-se
 #que na lista oficial de cada país consta, além de outros dados, peso e idade de 12
