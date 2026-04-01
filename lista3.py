@@ -161,34 +161,39 @@ def q8():
 #analisados.
 def q9():
     try:
-        for i in range(1,21):
-            idade = int(input("Informe sua idade: "))
-            opiniao = int(input("Opinião (3-Excelente, 2-Bom, 1-Regular): "))
-            idadeE = 0
-            qtdE = 0
-            qtdR = 0
-            qtdB = 0
-            
-            if opiniao == 3:
-                idadeE += idade
-                qtdE += 1
-            elif opiniao == 2:
-                qtdB += 1
-            elif opiniao == 1:
-                qrtR += 1
-            else:
-                print("Opção inválida!")
+        total_espectadores = 20
+        soma_idades_excelente = 0
+        contador_excelente = 0
+        contador_regular = 0
+        contador_bom = 0
 
-        if qtdE > 0:
-            mediaIE = idadeE/qtdE
+        for i in range(1,total_espectadores + 1):
+            idade = int(input("Informe sua idade: "))
+            opiniao = int(input("Informe sua opinião (3/2/1): "))
+            
+            if idade >= 1 and idade <= 100:
+                if opiniao == 3:
+                    soma_idades_excelente += idade
+                    contador_excelente += 1
+                elif opiniao == 2:
+                    contador_bom += 1
+                elif opiniao == 1:
+                    contador_regular += 1
+                else:
+                    print("Opção inválida!")
+            else:
+                print("Idade inválida! Somente idades de 1 a 100 anos.")
+
+        if contador_excelente > 0:
+            mediaIE = soma_idades_excelente/contador_excelente
         else:
             mediaIE = 0
 
-        pbom = (qtdB/20)*100
-
+        pbom = (contador_bom/total_espectadores)*100
+            
         print("Resultados da pesquisa\n")
         print(f"\n1.Média de idade de telespectadores que acharam o filme excelente: {mediaIE:.1f}")
-        print(f"2.Quantidade de pessoas que acharam o filme regular: {qtdR:.1f}")
+        print(f"2.Quantidade de pessoas que acharam o filme regular: {contador_regular:.1f}")
         print(f"3.A percentagem de telespectadores que acharam o filme bom:{pbom:.1f}")
     except ValueError:
         print("Valor inválido!")
@@ -416,5 +421,5 @@ while (erro == True):
         erro = False
     except ValueError:
         print('O número da questão deve ser numérico (inteiro)!')
-    except Exception as erro:
-        print(erro)
+    except Exception as e:
+        print(e)
