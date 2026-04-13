@@ -31,9 +31,9 @@ def inputfloat(msg, min=None,max=None):
         except Exception as erro:
             print(erro)
 
-def gerarP(min=4,max=10):
-    qtdP = random.randrange(min,max+1)
-    palavra = ''
-    for _ in range(qtdP):
+def gerar_palavra(min: int=4,max: int=10) -> str:
+    qtde_letras = random.randrange(min,max+1)
+    palavra=''
+    for _ in range(qtde_letras):
         palavra += chr(random.randrange(65,91))
     return palavra

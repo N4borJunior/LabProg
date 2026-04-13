@@ -1,7 +1,7 @@
 '''
 Lista de Exercícios referentes a estruturas de iteração (repetição)
 '''
-from util import inputint, inputfloat, gerarP
+from util import inputint, inputfloat, gerar_palavra
 import random
 
 #def exemploPara(): # Quando se sabe a qtde de repetições
@@ -207,15 +207,104 @@ def q9():
 #• O atleta mais pesado de cada time;
 #• O atleta mais jovem de cada time;
 #• O peso médio e a idade média de todos os participantes.
+def q10():
+    try:
+        Tpaises = 30
+        JPPais = 12
+        SPGeral = 0
+        SIGeral = 0
+        TAGeral = 0
+
+        for i in range(1,Tpaises + 1):
+            print(f"PAÍS {i}")
+
+            SPTime = 0
+            SITime = 0
+            MPPeso = -1
+            MJIdade = 150
+
+            for j in range(1,JPPais + 1):
+                peso: float = random.uniform(50.0, 100.0)
+                idade: int = random.randrange(17,50)
+                print(f"Peso do jogador {j}: {peso:.2f} kg")
+                print(f"Idade do jogador {j}: {idade}")
+
+                SPTime += peso
+                SITime += idade
+
+                if peso > MPPeso:
+                    MPPeso = peso
+
+                if idade < MJIdade:
+                    MJIdade = idade
+
+                MediaPT = SPTime/JPPais
+                MediaIT = SITime/JPPais
+
+            print(f"\nResultados Pais {i}:\n")
+            print(f"Peso médio do time: {MediaPT:.2f} kg")
+            print(f"Idade média do time: {MediaIT:.2f} anos")
+            print(f"Atleta mais pesado do time: {MPPeso:.2f} kg")
+            print(f"Atleta mais jovem do time: {MJIdade:.2f} anos\n")
+
+            SPGeral += SPTime
+            SIGeral += SITime
+            TAGeral += JPPais
+    
+            MediaPG = SPGeral/TAGeral
+            MediaIG = SIGeral/TAGeral
+
+        print("Resultados Gerais")
+        print(f"Peso médio de todos os participantes: {MediaPG:.2f}")
+        print(f"Idade média de todos os participantes: {MediaIG:.2f}")
+    except ValueError:
+        print("Valor de peso inválido!Somente números reais são aceitos.")
 
 #11. Construa um programa que leia vários números e informe quantos números
 #entre 100 e 200 foram digitados. Quando o valor 0 (zero) for lido, o algoritmo
 #deverá cessar sua execução.
-
+def q11():
+    num = 1
+    cont100_200 = 0
+    qtdenum = 0
+    while num != 0:
+        num = random.randrange(0,200)
+        print(num)
+        cont100_200 += 1 if 100<=num<=200 else 0
+        qtdenum += 1
+    print(f"De {qtdenum} gerados, {cont100_200} estão no intervalo entre 100 e 200!")
 #12. Dado um país A, com 5 milhões de habitantes e uma taxa de natalidade de 3% ao
 #ano, e um país B com 7 milhões de habitantes e uma taxa de natalidade de 2% ao
 #ano, fazer um programa que calcule e imprima o tempo necessário para que a
 #população do país A ultrapasse a população do país B.
+
+def q12():
+    PaisA: int = 5_000_000
+    PaisB: int = 7_000_000
+    ano = 0
+    while PaisA < PaisB:
+        ano += 1
+        PaisA = PaisA*1.03
+        PaisB = PaisB*1.02
+    print(f"Ao final de {ano} anos, a população do país A superou a de B")
+    print(f"População do País A = {int(PaisA)}")
+    print(f"População do País B = {int(PaisB)}")
+
+#12.1 faça uma simulação de investimento para que se descubra quantos anos serão necessários para que se alcance a marca de 1 milhão de reais a partir de um saldo inicial.
+#Um aporte mensal regular e uma taxa de retorno mensal constante
+
+def q121():
+    try:
+        Saldo: float = input("Informe o saldo inicial: R$ ")
+        taxaM: float = input("Informe a taxa mensal: R$ ")
+        aporteM: float = input("Informe o aporte mensal: R$ ")
+        Meses = 0
+
+        while Saldo < 1000000
+            Meses += 1
+            Saldo = Saldo*taxaM
+    except ValueError:
+        print("Valor inválido! Informe em números reais")
 
 #13. Uma empresa de fornecimento de energia elétrica faz a leitura mensal dos medidores
 #de consumo. Para cada consumidor, são digitados os seguintes dados:
