@@ -296,13 +296,14 @@ def q12():
 def q121():
     try:
         Saldo: float = input("Informe o saldo inicial: R$ ")
-        taxaM: float = input("Informe a taxa mensal: R$ ")
+        taxaM: float = input("Informe a taxa de retorno mensal(%): R$ ")
         aporteM: float = input("Informe o aporte mensal: R$ ")
-        Meses = 0
+        Mes = 0
 
-        while Saldo < 1000000
-            Meses += 1
-            Saldo = Saldo*taxaM
+        while Saldo < 1_000_000:
+            Mes += 1
+            Saldo = Saldo + taxaM + aporteM + saldo*taxaM/100
+        print(f"Tempo de investimento: (int(mes/12)) anos e (mes%12)meses.")
     except ValueError:
         print("Valor inválido! Informe em números reais")
 
@@ -319,6 +320,46 @@ def q121():
 #• O custo total para cada consumidor
 #• O total de consumo para os três tipos de consumidor
 #• A média de consumo dos tipos 1 e 2
+def q13():
+    kWh1 = 0
+    kWh2 = 0
+    kWh3 = 0
+    qtdtipo = 0
+
+    while True:
+        Nconsumidor = int(input("Número do consumidor (0 para sair): "))
+        if num_consumidor == 0:
+            break 
+        
+        kwh = float(input("Quantidade de kWh consumidos: "))
+        tipo = int(input("Tipo (1-Residencial, 2-Comercial, 3-Industrial): "))
+    
+        custo = 0
+        if tipo == 1:
+            custo = kwh * 0.3
+            kWh1 += kwh
+            qtdtipo12 += 1
+        elif tipo == 2:
+            custo = kwh * 0.5
+            kwh2 += kwh
+            qtdtipo12 += 1
+        elif tipo == 3:
+            custo = kwh * 0.7
+            kwh3 += kwh
+        else:
+            print("Tipo inválido!")
+            continue
+
+        print(f"Custo para o consumidor {num_consumidor}: R$ {custo:.2f}")
+
+    soma12 = kwh1 + kwh2
+    media12 = soma12 / qtdtipo12 if qtdtipo12 > 0 else 0
+
+    print("\n--- Relatório Final ---")
+    print(f"Total Consumo Residencial (1): {kwh1:.2f} kWh")
+    print(f"Total Consumo Comercial (2): {kwh2:.2f} kWh")
+    print(f"Total Consumo Industrial (3): {kwh3:.2f} kWh")
+    print(f"Média de consumo dos tipos 1 e 2: {media12:.2f} kWh")
 
 #14. Faça um programa que leia vários números inteiros e apresente o fatorial de cada
 #número. O algoritmo encerra quando se digita um número menor do que 1.n
