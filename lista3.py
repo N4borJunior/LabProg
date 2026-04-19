@@ -324,11 +324,11 @@ def q13():
     kWh1 = 0
     kWh2 = 0
     kWh3 = 0
-    qtdtipo = 0
+    qtdtipo12 = 0
 
     while True:
         Nconsumidor = int(input("Número do consumidor (0 para sair): "))
-        if num_consumidor == 0:
+        if Nconsumidor == 0:
             break 
         
         kwh = float(input("Quantidade de kWh consumidos: "))
@@ -341,16 +341,16 @@ def q13():
             qtdtipo12 += 1
         elif tipo == 2:
             custo = kwh * 0.5
-            kwh2 += kwh
+            kWh2 += kwh
             qtdtipo12 += 1
         elif tipo == 3:
             custo = kwh * 0.7
-            kwh3 += kwh
+            kWh3 += kwh
         else:
             print("Tipo inválido!")
             continue
 
-        print(f"Custo para o consumidor {num_consumidor}: R$ {custo:.2f}")
+        print(f"Custo para o consumidor {Nconsumidor}: R$ {custo:.2f}")
 
     soma12 = kwh1 + kwh2
     media12 = soma12 / qtdtipo12 if qtdtipo12 > 0 else 0
@@ -363,11 +363,53 @@ def q13():
 
 #14. Faça um programa que leia vários números inteiros e apresente o fatorial de cada
 #número. O algoritmo encerra quando se digita um número menor do que 1.n
+def q14():
+    try:
+        while True:
+            n = int(input("Digite um número inteiro (menor que 1 para sair): "))
+        
+            if n < 1:
+                print("Programa encerrado.")
+                break
+        
+            fatorial = 1
+            for i in range(1, n + 1):
+                fatorial *= i
+        
+            print(f"O fatorial de {n} é: {fatorial:.2f}")
+        
+    except ValueError:
+        print("Valor inválido! Digite um número inteiro.")
+
 
 #15. Faça um programa que permita entrar com a idade de várias pessoas e
 #imprima:
 #• total de pessoas com menos de 21 anos
 #• total de pessoas com mais de 50 anos
+def q15():
+    try:
+        TMenos = 0
+        TMais = 0
+        entre = 0
+
+        while True:
+            idade = int(input("Informe a idade de uma pessoa(0 ou maior que 100 para sair):"))
+
+            if idade >= 1 and idade < 21:
+                TMenos += 1
+            elif idade > 50 and idade < 101:
+                TMais += 1
+            elif idade >= 21 and idade <= 50:
+                entre += 1
+            else:
+                print("Programa interrompido.")
+                break
+        
+        print(F"Total de pessoas com menos de 21 anos: {TMenos}.")
+        print(F"Total de pessoas com mais de 50 anos: {TMais}.")
+                       
+    except ValueError:
+        print("Valor inválido! Informe a idade em números inteiros.")
 
 #16. Sabendo-se que a unidade lógica e aritmética calcula a divisão por meio de subtrações
 #sucessivas, criar um algoritmo que calcule e imprima o resto da divisão de
@@ -382,6 +424,25 @@ def q13():
 #  5 é o Divisor
 #  2 é o Quociente (resultado inteiro da divisão)
 #  0 é o Resto da Divisão
+def q16():
+    try:
+        dividendo = int(input("Digite o Dividendo: "))
+        divisor = int(input("Digite o Divisor: "))
+
+        resto = dividendo
+        quociente = 0
+
+        while resto >= divisor:
+            resto = resto - divisor
+            quociente += 1
+
+        print(f"Dividendo: {dividendo}")
+        print(f"Divisor: {divisor}")
+        print(f"Quociente: {quociente}")
+        print(f"Resto da Divisão: {resto}")
+
+    except ValueError:
+        print("Valor inválido! Informe o dividendo e divisor em números inteiros.")
 
 #17. Crie um programa que possa ler um conjunto de pedidos de compra e
 #calcule o valor total da compra. Cada pedido é composto pelos seguintes campos:
@@ -391,6 +452,34 @@ def q13():
 #• quantidade
 #O programa deverá processar novos pedidos até que o usuário digite 0 (zero)
 #como número do pedido.
+def q17():
+    try:
+        Tgeral = 0.0
+    
+        print("Digite 0 no número do pedido para encerrar.\n")
+
+        while True:
+                Npedido = int(input("Número do pedido: "))
+            
+                if Npedido == 0:
+                    break
+                
+                dia = int(input("Dia do pedido: "))
+                mes = int(input("Mês do pedido: "))
+                ano = int(input("Ano do pedido: "))
+                PrecoU = float(input("Preço unitário: R$ "))
+                quantidade = int(input("Quantidade: "))
+            
+                Vpedido = PrecoU * quantidade
+                Tgeral += Vpedido
+            
+                print(f"\nPedido {Npedido} adicionado. Valor: R$ {Vpedido:.2f}\n")
+            
+
+        print(f"VALOR TOTAL DA COMPRA: R$ {Tgeral:.2f}")
+    except ValueError:
+        print("Valor inválido! Informe datas e o número do produto em números inteiros, e preços em números reais.")
+
  
 #18. Uma pousada estipulou o preço para a diária em R$30,00 e mais uma taxa de
 #serviços diários de:
