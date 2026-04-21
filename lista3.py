@@ -489,6 +489,40 @@ def q17():
 #cliente e ao final o total faturado pela pousada.
 #O programa deverá ler novos clientes até que o usuário digite 0 (zero) como
 #número da conta.
+def q18():
+    try:
+        total = 0.0
+    
+        while True:
+            Nconta = int(input("Digite o número da conta (ou 0 para sair): "))
+        
+            if Nconta == 0:
+                break
+            
+            nome = input("Digite o nome do cliente: ")
+            dias = int(input("Digite o número de dias: "))
+        
+            if dias < 10:
+                taxa = 15.00
+            else:
+                taxa = 8.00
+            
+            diaria = 30.00
+            Tcliente = (diaria + taxa) * dias
+        
+            total += Tcliente
+        
+            print(f"\nCliente: {nome}")
+            print(f"Conta nº: {Nconta}")
+            print(f"Valor total da conta: R$ {Tcliente:.2f}\n")
+        
+        
+        print(f"\nFaturamento total da pousada: R$ {total:.2f}")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números reais e inteiros.")
+
+
+
 
 #19. Em uma Universidade, os alunos das turmas de informática fizeram uma prova
 #de algoritmos. Cada turma possui um número de alunos. Criar um programa que
@@ -497,6 +531,43 @@ def q17():
 #• média de cada turma;
 #• percentual de reprovados.
 #Obs.: Considere aprovado com nota >= 7.0
+def q19():
+    try:
+        turmas = int(input("Digite a quantidade de turmas: "))
+    
+        TaprovadosG = 0
+    
+        for i in range(1, turmas + 1):
+            print(f"\nTurma {i}")
+            alunos = int(input(f"Quantidade de alunos na turma {i}: "))
+        
+            Snotas = 0
+            Aturma = 0
+            Rturma = 0
+        
+            for j in range(1, alunos + 1):
+                nota = float(input(f"Digite a nota do aluno {j}: "))
+                Snotas += nota
+            
+                if nota >= 7.0:
+                    Aturma += 1
+                    TaprovadosG += 1
+                else:
+                    Rturma += 1
+        
+            media = Snotas / alunos
+            Preprovados = (Rturma / alunos) * 100
+        
+            print(f"\nMédia da Turma {i}: {media:.2f}")
+            print(f"Percentual de Reprovados na Turma {i}: {Preprovados:.2f}%")
+            print(f"Alunos aprovados nesta turma: {Aturma}")
+
+        print(f"\nTotal de alunos aprovados em todas as turmas: {TaprovadosG}")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números reais e inteiros.")
+
+
+
 
 #20. Uma pesquisa de opinião realizada no Rio de Janeiro, teve as seguintes perguntas:
 #• Qual o seu time de coração?
@@ -518,6 +589,9 @@ def q17():
 #• o número de pessoas de Niterói torcedoras do Fluminense
 #3.12. Exercícios da Aula 73
 #Obs.: O programa encerra quando se digita 0 para o time.
+# Inicialização das variáveis para contagem e somas
+
+
 
 #21. Em uma universidade cada aluno possui os seguintes dados:
 #• Renda pessoal;
@@ -529,6 +603,50 @@ def q17():
 #que a renda familiar e a porcentagem gasta com alimentação e outras despesas
 #em relação às rendas pessoal e familiar.
 #Obs.: O programa encerra quando se digita 0 para a renda pessoal.
+def q21():
+    try: 
+        alunos = 0
+        alunosDesAltas = 0
+        alunosRendaMaior = 0
+
+        while True:
+            try:
+                Rpessoal = float(input("\nRenda pessoal: R$ "))
+        
+                if Rpessoal == 0:
+                    break
+            
+                Rfamiliar = float(input("Renda familiar: R$ "))
+                Galimentacao = float(input("Total gasto com alimentação: R$ "))
+                Odespesas = float(input("Total gasto com outras despesas: R$ "))
+        
+                alunos += 1
+        
+
+                if Odespesas > 200:
+                    alunosDesAltas += 1
+            
+                if Rpessoal > Rfamiliar:
+                    alunosRendaMaior += 1
+            
+                Tgasto = Galimentacao + Odespesas
+                if Rfamiliar > 0:
+                    PGfamiliar = (Tgasto / Rfamiliar) * 100
+                    print(f"Gasto total representa {PGfamiliar:.2f}% da renda familiar.")
+        
+            except ValueError:
+                print("Entrada inválida. Por favor, digite números.")
+
+        if alunos > 0:
+            PAgasto = (alunosDesAltas / alunos) * 100
+    
+            print(f"Porcentagem de alunos com mais de R$200 em outras despesas: {PAgasto:.2f}%")
+            print(f"Número de alunos com renda pessoal maior que a familiar: {alunosRendaMaior}")
+        else:
+            print("\nNenhum aluno foi cadastrado.")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números reais e inteiros.")
+
 
 #22. Crie um programa que ajude o DETRAN a saber o total de recursos que foram
 #arrecadados com a aplicação de multas de trânsito.
