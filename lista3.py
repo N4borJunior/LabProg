@@ -598,6 +598,8 @@ def q20():
             if Time == 0:
                 break
 
+        
+
 
 
 #21. Em uma universidade cada aluno possui os seguintes dados:
