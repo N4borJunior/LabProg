@@ -590,6 +590,13 @@ def q19():
 #3.12. Exercícios da Aula 73
 #Obs.: O programa encerra quando se digita 0 para o time.
 # Inicialização das variáveis para contagem e somas
+def q20():
+    try:
+        while True:
+            Time = int(input("Qual o seu time do coração? (1 - Flu, 2 - Bot, 3 - Vas, 4 - Fla, 5 - outro, 0 para sair): "))
+        
+            if Time == 0:
+                break
 
 
 
