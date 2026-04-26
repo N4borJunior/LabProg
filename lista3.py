@@ -592,15 +592,57 @@ def q19():
 # Inicialização das variáveis para contagem e somas
 def q20():
     try:
+        Flu = Bot = Vas = Fla = Outros = 0
+        salarioBot = 0
+        Botcont = 0
+        rjoutros = 0
+        nitFlu = 0
+
+        print("Digite 0 no time para encerrar a pesquisa.\n")
+
         while True:
-            Time = int(input("Qual o seu time do coração? (1 - Flu, 2 - Bot, 3 - Vas, 4 - Fla, 5 - outro, 0 para sair): "))
-        
-            if Time == 0:
+            time = int(input("Qual o seu time de coração? (1-Flu, 2-Bot, 3-Vas, 4-Fla, 5-Outros): "))
+            if time == 0:
                 break
+    
+            mora = int(input("Onde você mora? (1-RJ, 2-Niterói, 3-Outros): "))
+    
+            salario = float(input("Qual o seu salário? R$ "))
+    
+            if time == 1:
+                Flu += 1
+                if mora == 2:
+                    nitFlu += 1
+            elif time == 2:
+                Bot += 1
+                salarioBot += salario
+                Botcont += 1
+            elif time == 3:
+                Vas += 1
+            elif time == 4:
+                Fla += 1
+            else:
+                Outros += 1
+                if mora == 1:
+                    rjoutros += 1
+    
+        print(f"Número de torcedores por clube:")
+        print(f"Fluminense: {Flu}")
+        print(f"Botafogo: {Bot}")
+        print(f"Vasco: {Vas}")
+        print(f"Flamengo: {Fla}")
+        print(f"Outros: {Outros}")
 
-        
+        if Botcont > 0:
+            mediaBot = salarioBot / Botcont
+            print(f"Média salarial dos torcedores do Botafogo: R$ {mediaBot:.2f}")
+        else:
+            print("Média salarial dos torcedores do Botafogo: Ninguém votou no Botafogo.")
 
-
+        print(f"Moradores do RJ torcedores de outros clubes: {rjoutros}")
+        print(f"Pessoas de Niterói torcedoras do Fluminense: {Flu}")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números inteiros e reais.")
 
 #21. Em uma universidade cada aluno possui os seguintes dados:
 #• Renda pessoal;
@@ -668,6 +710,42 @@ def q21():
 #imprimir também o número da carteira do motorista que obteve o maior número
 #de multas.
 #Obs.: O programa encerra ao ler a carteira de motorista de valor 0.
+# Inicialização de variáveis
+def q22():
+    try:
+        Tarrecadado = 0.0
+        maiorMultas = -1
+        CMmultada = 0
+
+        print("Digite 0 na carteira de motorista para encerrar.")
+
+        while True:
+            carteira = int(input("\nNúmero da carteira de motorista (1-4327): "))
+    
+            if carteira == 0:
+                break
+        
+            Nmultas = int(input("Número de multas: "))
+    
+            Dmotorista = 0.0
+            for i in range(Nmultas):
+                Vmulta = float(input(f"Valor da multa {i+1}: R$ "))
+                Dmotorista += Vmulta
+        
+            Tarrecadado += Dmotorista
+    
+            print(f"Dívida total do motorista {carteira}: R$ {Dmotorista:.2f}")
+    
+            if Nmultas > maiorMultas:
+                maiorMultas = Nmultas
+                CMmultada = carteira
+
+        print(f"TOTAL ARRECADADO: R$ {Tarrecadado:.2f}")
+        if CMmultada != 0:
+            print(f"Motorista com mais multas: Carteira {CMmultada} ({maiorMultas} multas)")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números reais e inteiros.")
+
 
 #23. Crie um programa que leia um conjunto de informações (nome, sexo, idade, peso
 #e altura) dos atletas que participaram de uma olimpíada, e informar:
@@ -678,7 +756,64 @@ def q21():
 #atleta.
 #Para resolver este exercício, consulte a aula 7 que aborda o tratamento de strings,
 #como comparação e atribuição de textos.
+def q23():
+    try:
+        FMalta = 0
+        MMpesado = 0
+        Sidade = 0
+        contI = 0
+        FMAnome = ""
+        MMPnome = ""
 
+        print("Digite @ em nome do atleta para encerrar.")
+
+        while True:
+            nome = input("Informe o nome do atleta: ")
+            if nome == "@":
+                break
+
+            sexo = input("Informe o sexo do atleta (M/F): ").upper()
+            idade = int(input("Informe a idade do atleta: "))
+            peso = float(input("Informe o peso do atleta: "))
+            altura = float(input("Informe a altura do atleta(Ex: 1.70): "))
+
+            Sidade += idade
+            contI += 1
+            
+            if sexo == "F":
+                if altura > FMalta:
+                    FMalta = altura
+                    FMAnome = nome
+
+            if sexo == "M":
+                if peso > MMpesado:
+                    MMpesado = peso
+                    MMPnome = nome
+
+            print("Dados do atleta.")
+            print(f"Nome: {nome}")
+            print(f"Sexo: {sexo}")
+            print(f"Idade: {idade}")
+            print(f"Peso: {peso:.2f}")
+            print(f"Altura: {altura:.2f}")
+
+        if contI >= 1:
+            print("Resultados da pesquisa:")
+            if FMAnome:
+                print(f"Atleta feminina mais alta: {FMAnome} \n({FMalta:.2f}m)")
+            else:
+                print("Nenhuma atleta feminina foi registrada.")
+
+            if MMPnome:
+                print(f"Atleta Masculino mais pesado: {MMPnome} \n({MMpesado:.2f}kg)")
+            else:
+                print("Nenhum atleta masculino foi registrado.")
+            
+            Midade = (Sidade/contI)
+
+            print(f"Media de idade dos atletas: {Midade:.2f} anos")
+    except ValueError:
+        print("Valor inválido! Somente aceitos números reais e inteiros.")
 #24. Faça um programa que calcule quantos litros de gasolina são usados em uma
 #viagem, sabendo que um carro faz 10 km/litro. O usuário fornecerá a velocidade
 #do carro e o período de tempo que viaja nesta velocidade para cada trecho do
