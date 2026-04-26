@@ -928,6 +928,42 @@ def q25():
 #• Calcule e imprima a porcentagem de audiência em cada canal.
 #Obs.: Para encerrar a entrada de dados, digite o número do canal zero.
 
+def q26():
+    try:
+        canais = {4: 0, 5: 0, 7: 0, 12: 0}
+        espectadores = 0
+
+        print("Canais válidos: 4, 5, 7, 12. Digite 0 para encerrar.")
+
+        while True:
+            canal = int(input("\nInforme o número do canal: "))
+            
+            if canal == 0:
+                break
+            
+            if canal not in canais:
+                print("Canal inválido! Apenas 4, 5, 7 ou 12.")
+                continue
+            
+            pessoas = int(input(f"Quantas pessoas estavam assistindo ao canal {canal}? "))
+            if pessoas < 0:
+                print("Quantidade de pessoas não pode ser negativa.")
+                continue
+
+            canais[canal] += pessoas
+            espectadores += pessoas
+
+        print("\nResultado da Pesquisa")
+        if espectadores > 0:
+            for canal, publico in canais.items():
+                porcentagem = (publico / espectadores) * 100
+                print(f"Canal {canal:2}: {porcentagem:>6.2f}% de audiência ({publico} pessoas)")
+            print(f"Total de pessoas pesquisadas: {espectadores}")
+        else:
+            print("Nenhum dado de audiência foi registrado.")
+    except ValueError:
+            print("Entrada inválida. Digite apenas números inteiros.")
+
 #27. Crie um programa que calcule e imprima o CR do período para os alunos de
 #computação. Para cada aluno, o algoritmo deverá ler:
 #• número da matrícula;
@@ -938,6 +974,41 @@ def q25():
 #• fim da entrada de dados é marcada por uma matrícula inválida (matrículas
 #válidas de 1 a 5000);
 #• CR do aluno é igual à média aritmética de suas notas.
+# Inicialização da variável para o melhor CR (começa com 0)
+
+def q27():
+    try:
+        melhorCR = 0.0
+
+        while True:
+            matricula = int(input("Digite a matrícula (1-5000) ou outro valor para sair: "))
+    
+            if matricula < 1 or matricula > 5000:
+                break
+    
+            disciplinas = int(input(f"Quantidade de disciplinas do aluno {matricula}: "))
+    
+            Snotas = 0.0
+            for i in range(disciplinas):
+                nota = float(input(f"Digite a nota da disciplina {i + 1}: ").replace(',', '.'))
+                Snotas += nota
+    
+            if disciplinas > 0:
+                CRaluno = Snotas / disciplinas
+                print(f"O CR do aluno {matricula} é: {CRaluno:.2f}")
+        
+                if disciplinas >= 5:
+                    if CRaluno > melhorCR:
+                        melhorCR = CRaluno
+            else:
+                print(f"Aluno {matricula} não cursou disciplinas.")
+
+        if melhorCR > 0:
+            print(f"O melhor CR entre alunos com mais de 5 disciplinas foi: {melhorCR:.2f}")
+        else:
+            print("Nenhum aluno com 5 ou mais disciplinas foi registrado.")
+    except ValueError:
+        print("Valor inválido!Somente são aceitos números reais e inteiros.")
 
 #28. Construa um programa que receba a idade, a altura e o peso de várias pessoas,
 #Calcule e imprima:
@@ -945,6 +1016,53 @@ def q25():
 #• a média das alturas das pessoas com idade entre 10 e 20 anos;
 #• a porcentagem de pessoas com peso inferior a 40 quilos entre todas as
 #pessoas analisadas.
+
+def q28():
+    try:
+        pessoas = 0
+        A50anos = 0
+        Salturas = 0.0
+        cont = 0
+        Pinf40 = 0
+
+        print("Digite 0 na idade para sair")
+
+        while True:
+            print(f"\nDados da Pessoa {pessoas + 1}")
+            idade = int(input("Idade: "))
+
+            if idade == 0:
+                break
+
+            altura = float(input("Altura (m): ").replace(',', '.'))
+            peso = float(input("Peso (kg): ").replace(',', '.'))
+    
+            pessoas += 1
+    
+            if idade > 50:
+                acima_50_anos += 1
+        
+            if 10 <= idade <= 20:
+                Salturas += altura
+                cont += 1
+        
+            if peso < 40:
+                Pinf40 += 1
+
+        print("\nRELATÓRIO FINAL\n")
+        print(f"Pessoas com mais de 50 anos: {A50anos}")
+
+        if cont > 0:
+            Maltura = Salturas / cont
+            print(f"Média das alturas (10 a 20 anos): {Maltura:.2f}m")
+        else:
+            print("Nenhuma pessoa entre 10 e 20 anos foi registrada.")
+
+        if pessoas > 0:
+            Ppeso = (Pinf40 / pessoas) * 100
+            print(f"Porcentagem de pessoas com menos de 40kg: {Ppeso:.1f}%")
+    except ValueError:
+        print("Valor inválido! Algum valor foi inserido de forma errada. ")
 
 #29. Construa um programa que receba o valor e o código de várias mercadorias
 #vendidas em um determinado dia. Os códigos obedecem a lista a seguir:
@@ -956,6 +1074,44 @@ def q25():
 #• o total vendido naquele dia em cada um dos códigos.
 #Obs.: Para encerrar a entrada de dados, digite o valor da mercadoria zero.
 
+def q29():
+    try:
+        geral = 0.0
+        limpeza = 0.0
+        alimentacao = 0.0
+        higiene = 0.0
+
+        print("Sistema de Vendas Diárias")
+        print("Códigos: L (Limpeza), A (Alimentação), H (Higiene)")
+
+        while True:
+            valor = float(input("\nValor da mercadoria (ou 0 para encerrar): ").replace(',', '.'))
+
+            if valor == 0:
+                break
+    
+            codigo = input("Código da mercadoria (L/A/H): ").upper()
+    
+            if codigo == 'L':
+                limpeza += valor
+                geral += valor
+            elif codigo == 'A':
+                alimentacao += valor
+                geral += valor
+            elif codigo == 'H':
+                higiene += valor
+                geral += valor
+            else:
+                print("Código inválido! Esta venda não será contabilizada.")
+
+        print("FECHAMENTO DO DIA")
+        print(f"\nTotal Limpeza:      R$ {limpeza:.2f}")
+        print(f"Total Alimentação:  R$ {alimentacao:.2f}")
+        print(f"Total Higiene:      R$ {higiene:.2f}")
+        (f"\nTOTAL VENDIDO NO DIA:   R$ {geral:.2f}")
+    except ValueError:
+        print("Valor inválido! Somente números inteiros e L,A e H são aceitos")
+
 #30. Faça um programa que receba a idade e o estado civil (C-casado, S-solteiro, V-viúvo
 #e D-desquitado ou separado) de várias pessoas. Calcule e imprima:
 #• a quantidade de pessoas casadas;
@@ -965,12 +1121,65 @@ def q25():
 #analisadas.
 #Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a
 #idade.
+
+def q30():
+    try:
+        pessoas = 0
+        casados = 0
+        solteiros = 0
+        desquitados = 0
+        SIviuvos = 0
+        viuvos = 0
+
+        print("Censo de Estado Civil")
+        print("Códigos: C (Casado), S (Solteiro), V (Viúvo), D (Desquitado/Separado)")
+
+        while True:
+            idade = int(input("\nDigite a idade (ou número negativo para sair): "))
+    
+            if idade < 0:
+                break
+    
+            Ecivil = input("Estado Civil (C/S/V/D): ").upper()
+            pessoas += 1
+    
+            if Ecivil == 'C':
+                casados += 1
+            elif Ecivil == 'S':
+                solteiros += 1
+            elif Ecivil == 'V':
+                viuvos += 1
+                SIviuvos += idade
+            elif Ecivil == 'D':
+                desquitados += 1
+            else:
+                print("Código de estado civil inválido! Pessoa não contabilizada.")
+                pessoas -= 1
+
+        print("RELATÓRIO DE DADOS")
+
+        if pessoas > 0:
+            print(f"\nQuantidade de pessoas casadas: {casados}")
+            print(f"Quantidade de pessoas solteiras: {solteiros}")
+            if viuvos > 0:
+                Mviuvos = SIviuvos / viuvos
+                print(f"Média de idade das pessoas viúvas: {Mviuvos:.1f} anos")
+            else:
+                print("Nenhuma pessoa viúva foi registrada.")
+    
+            Pdesquitados = (desquitados / pessoas) * 100
+            print(f"Porcentagem de desquitados/separados: {Pdesquitados:.1f}%")
+        else:
+            print("Nenhum dado foi inserido.")
+    except ValueError:
+        print("Valor inválido! Somente as opções informadas são válidas")
+
 erro = True
 while (erro == True):
     try:
         opcao = int(input('Digite o número da questão: '))
-        if opcao < 1 or opcao > 25:
-            raise Exception('Questão inválida, valores devem estar entre 1 e 25')
+        if opcao < 1 or opcao > 30:
+            raise Exception('Questão inválida, valores devem estar entre 1 e 30')
         eval(f'q{opcao}()')
         erro = False
     except ValueError:
