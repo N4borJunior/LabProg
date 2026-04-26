@@ -814,6 +814,7 @@ def q23():
             print(f"Media de idade dos atletas: {Midade:.2f} anos")
     except ValueError:
         print("Valor inválido! Somente aceitos números reais e inteiros.")
+
 #24. Faça um programa que calcule quantos litros de gasolina são usados em uma
 #viagem, sabendo que um carro faz 10 km/litro. O usuário fornecerá a velocidade
 #do carro e o período de tempo que viaja nesta velocidade para cada trecho do
@@ -824,6 +825,33 @@ def q23():
 #Deverá imprimir também o total de litros gastos na viagem. O programa encerra
 #quando o usuário informar um valor negativo de velocidade.
 #74 Aula 3. Estruturas de Iteração
+
+def q24():
+    try:
+        Tlitros = 0.0
+        rendimento = 10 
+    
+        print("Digite um valor negativo na velocidade para encerrar.\n")
+    
+        while True:
+            velocidade = float(input("Digite a velocidade do trecho (km/h): "))
+        
+            if velocidade < 0:
+                break
+            
+            tempo = float(input("Digite o tempo de viagem nesse trecho (horas): "))
+        
+            distancia = tempo * velocidade
+            litrosTrecho = distancia / rendimento
+        
+            Tlitros += litrosTrecho
+        
+            print(f"Distância percorrida: {distancia:.2f} km")
+            print(f"Litros consumidos neste trecho: {litrosTrecho:.2f} L\n")
+
+        print(f"Total de combustível gasto na viagem: {Tlitros:.2f} litros.")
+    except ValueError:
+        print("Valor inválido! Somente são aceitos números reais.")
 
 #25. Faça um programa que calcule o imposto de renda de um grupo de contribuintes,
 #considerando que:
@@ -844,6 +872,51 @@ def q23():
 #g) ao final o programa deverá imprimir o total do imposto arrecadado pela
 #Receita Federal e o número de contribuintes isentos;
 #h) leve em consideração o fato de o primeiro CIC informado poder ser zero.
+
+def q25():
+    try:
+        TIarrecadado = 0.0
+        Nisentos = 0
+    
+        print("Digite CIC = 0 para finalizar.")
+
+        while True:
+            cic = int(input("\nDigite o CIC (CPF) do contribuinte: "))
+    
+            if cic == 0:
+                break
+                
+            dependentes = int(input("Digite o número de dependentes: "))
+            Rbruta = float(input("Digite a renda bruta anual: R$ "))
+            abatimento = dependentes * 600.0
+            Rliquida = Rbruta - abatimento
+            imposto = 0.0
+
+            if Rliquida <= 1000.0:
+                imposto = 0.0
+                Nisentos += 1
+                status = "Isento"
+            elif Rliquida <= 5000.0:
+                imposto = Rliquida * 0.15
+                status = f"15% (R$ {imposto:.2f})"
+            else:
+                imposto = Rliquida * 0.25
+                status = f"25% (R$ {imposto:.2f})"
+                
+            print(f"CIC: {cic}")
+            print(f"Renda Líquida: R$ {Rliquida:.2f}")
+            print(f"Imposto a Pagar: {status}")
+            
+            TIarrecadado += imposto
+
+        print("RELATÓRIO FINAL DA RECEITA FEDERAL")
+        print(f"Total de imposto arrecadado: R$ {TIarrecadado:.2f}")
+        print(f"Número de contribuintes isentos: {Nisentos}")
+    except ValueError:
+            print("Valor inválido. Somente são aceitos números reais e inteiros.")
+
+
+
 
 #26. Foi feita uma pesquisa de audiência de canal de TV em várias casas de uma
 #certa cidade, em um determinado dia. Para cada casa visitada foram fornecidos o
