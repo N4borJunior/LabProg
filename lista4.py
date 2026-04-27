@@ -1,3 +1,4 @@
+from util import inputint, inputfloat, gerar_palavra
 import random
 '''
 Lista de Exercícios referentes a coleções e arquivos em python
@@ -7,17 +8,68 @@ Lista de Exercícios referentes a coleções e arquivos em python
 #permita que o usuário digite um número inteiro para ser buscado na lista, se
 #for encontrado o programa deve imprimir a posição desse número na lista, caso
 #contrário, deve imprimir a mensagem: "Nao encontrado!".
+def q1():
+    try:
+        Números = []
+
+        print("Digite 15 números inteiros:")
+        for i in range(15):
+            num = int(input(f"{i+1}º número: "))
+            Números.append(num)
+
+        busca = int(input("Digite o número que deseja buscar na lista: "))
+        if busca in Números:
+            posição = Números.index(busca)
+            print(f"O número {busca} está na posição {posição}")
+        else:
+            print(f"Número {busca} não foi encontrado dentro da lista")
+    except ValueError:
+        print("Valor Inválido! Somente são aceitos números inteiros.")
 
 #2. Faça um programa que armazene 10 letras em uma lista e imprima uma listagem
 #numerada. (ASCII 65-90)
+def q2():
+    letras: list = [chr(random.randint(65, 90)) for _ in range(10)]
+
+    print("Listagem númerada:")
+    for i, letra in enumerate(letras, start=1):
+        print(f"{i}: {letra}")
+
 
 #2.1 Faça um programa que peça ao usuário para informar a qtde de caracteres
 # para a geração de uma senha aleatória. Ao final o programa deve exibir a
 # senha sugerida. (ASCII 40-126)
+def q21():
+    try:
+        tamanho = int(input("Informe a quantidade de caracteres para a sua senha: "))
+
+        if tamanho <= 0:
+            print("Informe um número maior que 0.")
+            return
+        
+        senha = ""
+
+        for i in range(tamanho):
+            caractere = chr(random.randint(40,126))
+            senha += caractere
+
+        print("Senha aleatória gerada:")
+        print(senha)
+    except ValueError:
+        print("Valor inválido! São aceitos somente números inteiros.")
 
 #3. Construa uma programa que armazene 15 números em uma lista e imprima
 #uma listagem numerada contendo o número e uma das mensagens: par ou ímpar.
+def q3():
+    numeros: list = [int(random.randint(1, 200)) for _ in range(15)]
 
+    print("Listagem numerada:")
+    for i, num in enumerate(numeros, start=1):
+        if num % 2 == 0:
+            print(f"{i}: {num} é par")
+        else:
+            print(f"{i}: {num} é impar")
+            
 #4. Faça um programa que armazene 8 números em uma lista e imprima todos os
 #números. Ao final, imprima o total de números múltiplos de seis.
 
@@ -100,5 +152,15 @@ Lista de Exercícios referentes a coleções e arquivos em python
 #20. Faça um programa que leia a matrícula e a média de 100 alunos. Ordene da maior
 #para a menor nota e imprima uma relação contendo todas as matrículas e médias.
 
-questao = int(input('Questão a ser executada: '))
-eval(f'q{questao}()')
+erro = True
+while (erro == True):
+    try:
+        opcao = int(input('Digite o número da questão: '))
+        if opcao < 1 or opcao > 21:
+            raise Exception("Questão inválida, valores devem estar entre 1 e 21")
+        eval(f'q{opcao}()')
+        erro = False
+    except ValueError:
+        print('O número da questão deve ser numérico (inteiro)!')
+    except Exception as e:
+        print(e)
