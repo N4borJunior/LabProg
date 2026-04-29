@@ -72,12 +72,39 @@ def q3():
             
 #4. Faça um programa que armazene 8 números em uma lista e imprima todos os
 #números. Ao final, imprima o total de números múltiplos de seis.
+def q4():
+    numeros: list = [int(random.randint(1, 200)) for _ in range(8)]
+
+    print(f"Números gerados: {numeros}.")
+
+    multiplos6: int = sum(1 for n in numeros if n % 6 == 0)
+
+    print(f"Quantidade de números que são múltiplos de 6: {multiplos6}.")
+
 
 #5. Faça um programa que armazene as notas das provas 1 e 2 de 15 alunos. Calcule
 #e armazene a média arredondada. Armazene também a situação do aluno: 1-
 #Aprovado ou 2-Reprovado. Ao final o programa deve imprimir uma listagem
 #contendo as notas, a média e a situação de cada aluno em formato tabulado.
 #Utilize quantas listas forem necessárias para armazenar os dados.
+def q5():
+    nota1: list = []
+    nota2: list = []
+    medias = []
+    sit = []
+    alunos = 15
+
+    for i in range(alunos):
+        n1: list = [round(random.uniform(0.0, 10.0), 2) for _ in range(15)]
+        n2: list = [round(random.uniform(0.0, 10.0), 2) for _ in range(15)]
+
+        nota1.append(n1)
+        nota2.append(n2)
+
+        media = round((n1 + n2) / 2, 1)
+        medias.append(media)
+
+    print(nota1)
 
 #6. Construa um programa que permita armazenar o salário de 20 pessoas. Calcular
 #e armazenar o novo salário sabendo-se que o reajuste foi de 8%. Imprimir uma
