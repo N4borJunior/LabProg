@@ -20,7 +20,7 @@ def q1():
         busca = int(input("Digite o número que deseja buscar na lista: "))
         if busca in Números:
             posição = Números.index(busca)
-            print(f"O número {busca} está na posição {posição}")
+            print(f"O número {busca} está na posição {posição+1}")
         else:
             print(f"Número {busca} não foi encontrado dentro da lista")
     except ValueError:
@@ -95,8 +95,8 @@ def q5():
     alunos = 15
 
     for i in range(alunos):
-        n1: list = [round(random.uniform(0.0, 10.0), 2) for _ in range(15)]
-        n2: list = [round(random.uniform(0.0, 10.0), 2) for _ in range(15)]
+        n1: list = round(random.uniform(0.0, 10.0), 1)
+        n2: list = round(random.uniform(0.0, 10.0), 1)
 
         nota1.append(n1)
         nota2.append(n2)
@@ -104,12 +104,38 @@ def q5():
         media = round((n1 + n2) / 2, 1)
         medias.append(media)
 
-    print(nota1)
+        if media >= 7.0:
+            sit.append("1-Aprovado")
+        else:
+            sit.append("2-Reprovado")
+
+    print(f"{'Aluno':<10} | {'Prova 1':<5} | {'Prova 2':<5} | {'Média':<6} | {'Situação'}")
+
+    for i in range(15):
+        print(f"{i+1:<10} | {nota1[i]:<7.1f} | {nota2[i]:<7.1f} | {medias[i]:<6.1f} | {sit[i]}")
 
 #6. Construa um programa que permita armazenar o salário de 20 pessoas. Calcular
 #e armazenar o novo salário sabendo-se que o reajuste foi de 8%. Imprimir uma
 #listagem numerada com o salário e o novo salário. Declare quantas listas forem
 #necessárias.
+def q6():
+    pessoas = 20
+    salarios: list = []
+    Nsalarios: list = []
+    porcentagem = 8
+    Rsalarios: list = []
+
+    for i in range(pessoas):
+        salario = round(random.uniform(1600.00, 5000.00), 2) 
+        salarios.append(salario)
+        Rsalario = salario*(porcentagem/100)
+        Rsalarios.append(Rsalario)
+        nsalario = salario + Rsalario
+        Nsalarios.append(nsalario)
+
+    for i, num in enumerate(salarios, start=1):
+        print(f'{i+1:<9} | {salarios[i]:<9.2f} | {Nsalarios[i]:<9.2f}')
+
 
 #7. Crie um programa que leia o preço de compra e o preço de venda de 100 mercadorias
 #(utilize listas). Ao final, o programa deverá imprimir quantas mercadorias
