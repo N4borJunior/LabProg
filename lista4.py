@@ -143,6 +143,42 @@ def q6():
 #• lucro < 10%
 #• 10% <= lucro <= 20%
 #• lucro > 20%
+def q7():
+    Pcompra = []
+    Pvenda = []
+
+    lucro_baixo = 0    # < 10%
+    lucro_medio = 0    # 10% <= lucro <= 20%
+    lucro_alto = 0  
+
+    for i in range(100):
+        pc = round(random.uniform(00.00, 5000.00), 2)
+        pv = round(pc * random.uniform(0.8, 1.3), 2)
+    
+        Pcompra.append(pc)
+        Pvenda.append(pv)
+
+    for i in range(100):
+        lucro = ((Pvenda[i] - Pcompra[i]) / Pcompra[i]) * 100
+    
+        if lucro < 10:
+            lucro_menor_10 += 1
+        elif 10 <= lucro <= 20:
+            lucro_entre_10_20 += 1
+        else: # lucro > 20
+            lucro_maior_20 += 1
+
+# Exibição dos resultados
+    print("\n" + "="*30)
+    print("RESUMO DE LUCROS")
+    print("="*30)
+    print(f"Mercadorias com lucro < 10%: {lucro_menor_10}")
+    print(f"Mercadorias com lucro entre 10% e 20%: {lucro_entre_10_20}")
+    print(f"Mercadorias com lucro > 20%: {lucro_maior_20}")
+    print("="*30)
+
+    
+
 
 #8. Construa um programa que armazene o código, a quantidade, o valor de compra
 #e o valor de venda de 30 produtos. A listagem pode ser de todos os produtos ou
