@@ -144,45 +144,45 @@ def q6():
 #• 10% <= lucro <= 20%
 #• lucro > 20%
 def q7():
-    Pcompra = []
-    Pvenda = []
-
-    lucro_baixo = 0    # < 10%
-    lucro_medio = 0    # 10% <= lucro <= 20%
-    lucro_alto = 0  
+    pcompra = []
+    pvenda = []
 
     for i in range(100):
-        pc = round(random.uniform(00.00, 5000.00), 2)
-        pv = round(pc * random.uniform(0.8, 1.3), 2)
+        compra = round(random.uniform(10.0, 500.0), 2)
+        print(f"\nvalor de compra: {compra}")
+        venda = round(compra * random.uniform(1.05, 1.25), 2)
+        print(f"Valor de venda: {venda}")
     
-        Pcompra.append(pc)
-        Pvenda.append(pv)
+        pcompra.append(compra)
+        pvenda.append(venda)
+
+    lbaixo = 0   
+    lmedio = 0   
+    lalto = 0     
 
     for i in range(100):
-        lucro = ((Pvenda[i] - Pcompra[i]) / Pcompra[i]) * 100
+        compra = pcompra[i]
+        venda = pvenda[i]
     
-        if lucro < 10:
-            lucro_menor_10 += 1
-        elif 10 <= lucro <= 20:
-            lucro_entre_10_20 += 1
-        else: # lucro > 20
-            lucro_maior_20 += 1
-
-# Exibição dos resultados
-    print("\n" + "="*30)
-    print("RESUMO DE LUCROS")
-    print("="*30)
-    print(f"Mercadorias com lucro < 10%: {lucro_menor_10}")
-    print(f"Mercadorias com lucro entre 10% e 20%: {lucro_entre_10_20}")
-    print(f"Mercadorias com lucro > 20%: {lucro_maior_20}")
-    print("="*30)
-
+        margem = ((venda - compra) / compra) * 100
     
+        if margem < 10:
+            lbaixo += 1
+        elif 10 <= margem <= 20:
+            lmedio += 1
+        else:
+            lalto += 1
 
+    print(f"Lucro < 10%: {lbaixo} mercadorias")
+    print(f"10% <= Lucro <= 20%: {lmedio} mercadorias")
+    print(f"Lucro > 20%: {lalto} mercadorias")
 
 #8. Construa um programa que armazene o código, a quantidade, o valor de compra
 #e o valor de venda de 30 produtos. A listagem pode ser de todos os produtos ou
 #somente de um ao se digitar o código. Utilize dicionário como estrutura de dados.
+def q8():
+
+
 
 #9. Faça um programa que leia dois conjuntos de números inteiros, tendo
 #cada um 10 elementos. Ao final o programa deve listar os elementos comuns aos
