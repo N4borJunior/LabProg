@@ -1,8 +1,11 @@
 from util import inputint, inputfloat, gerar_palavra
+from rich.console import Console
 import random
 '''
 Lista de Exercícios referentes a coleções e arquivos em python
 '''
+
+console = Console()
 
 #1. Faça um programa que armazene 15 números inteiros em uma lista e depois
 #permita que o usuário digite um número inteiro para ser buscado na lista, se
@@ -12,7 +15,7 @@ def q1():
     try:
         Números = []
 
-        print("Digite 15 números inteiros:")
+        print("Digite 15 números inteiros: 1")
         for i in range(15):
             num = int(input(f"{i+1}º número: "))
             Números.append(num)
@@ -69,6 +72,20 @@ def q3():
             print(f"{i}: {num} é par")
         else:
             print(f"{i}: {num} é impar")
+
+#3.1 Construa uma programa que armazene 15 números em uma lista e imprima
+#uma listagem numerada contendo o número e uma das mensagens: par ou ímpar.
+def q31():
+    numeros: list = [int(random.randint(1, 200)) for _ in range(15)]
+    with open('resultado_q31.txt','a') as arquivo:
+        arquivo.write('=====================================================')
+
+    print("Listagem numerada:")
+    for i, num in enumerate(numeros, start=1):
+        if num % 2 == 0:
+            arquivo.write(f"{i}: {num} é par")
+        else:
+            arquivo.write(f"{i}: {num} é impar")           
             
 #4. Faça um programa que armazene 8 números em uma lista e imprima todos os
 #números. Ao final, imprima o total de números múltiplos de seis.
@@ -182,16 +199,77 @@ def q7():
 #somente de um ao se digitar o código. Utilize dicionário como estrutura de dados.
 def q8():
 
+    estoque = {}
 
+    for i in range(30):
+        codigo = str(random.randint(0, 999))
+    
+        while codigo in estoque:
+            codigo = str(random.randint(0, 999))
+        
+        qtd = random.randint(1, 100)         
+        vcompra = round(random.uniform(10.0, 500.0), 2)
+        vvenda = round(vcompra * random.uniform(1.2, 1.8), 2)
+
+        estoque[codigo] = {
+            'quantidade': qtd,
+            'compra': vcompra,
+            'venda': vvenda
+        }
+
+    print(f"Sucesso: {len(estoque)} produtos cadastrados com dados aleatórios.")
+
+    while True:
+        print("\n--- Sistema de Estoque ---")
+        print("1 - Listar todos os produtos")
+        print("2 - Buscar produto por código")
+        print("0 - Sair")
+    
+        opcao = input("Escolha uma opção: ")
+    
+        if opcao == '1':
+            print(f"\n{'CÓDIGO':<10} | {'QTD':<5} | {'COMPRA (R$)':<12} | {'VENDA (R$)':<12}")
+            for cod, dados in estoque.items():
+                print(f"{cod:<10} | {dados['quantidade']:<5} | {dados['compra']:<12.2f} | {dados['venda']:<12.2f}")
+    
+        elif opcao == '2':
+            cbusca = input("Digite o código para busca: ")
+            if cbusca in estoque:
+                p = estoque[cbusca]
+                print(f"\n[ Detalhes do Produto {cbusca} ]")
+                print(f"Estoque: {p['quantidade']} unidades")
+                print(f"Preço de Custo: R$ {p['compra']:.2f}")
+                print(f"Preço de Venda: R$ {p['venda']:.2f}")
+                print(f"Lucro Unitário: R$ {(p['venda'] - p['compra']):.2f}")
+            else:
+                print("\nErro: Código não encontrado.")
+            
+        elif opcao == '0':
+            print("Encerrando...")
+            break
+        else:
+            print("Opção inválida.")
 
 #9. Faça um programa que leia dois conjuntos de números inteiros, tendo
 #cada um 10 elementos. Ao final o programa deve listar os elementos comuns aos
 #conjuntos.
+def q9():
+    c1 = set(random.sample(range(1, 26), 10))
+    c2 = set(random.sample(range(1, 26), 10))
+
+    print(f"Conjunto 1: {sorted(list(c1))}")
+    print(f"Conjunto 2: {sorted(list(c2))}")
+
+    print(f"Números em ambos os conjuntos: {sorted(c1 & c2)}")
 
 #10. Faça um programa que leia uma lista com 10 elementos e obtenha outra lista resultado
 #cujos valores são os fatoriais da lista original.
 #Imprimir o maior e o menor, sem ordenar, o percentual de números pares e a
 #média dos elementos da lista.
+def q10():
+    lista1 = list(random.randint(1, 16), 10)
+
+    
 
 #11. Imprimir o maior e o menor, sem ordenar, o percentual de números pares e a
 #média dos elementos da lista.
@@ -245,8 +323,8 @@ erro = True
 while (erro == True):
     try:
         opcao = int(input('Digite o número da questão: '))
-        if opcao < 1 or opcao > 21:
-            raise Exception("Questão inválida, valores devem estar entre 1 e 21")
+        if opcao < 1 or opcao > 31:
+            raise Exception("Questão inválida, valores devem estar entre 1 e 31")
         eval(f'q{opcao}()')
         erro = False
     except ValueError:
