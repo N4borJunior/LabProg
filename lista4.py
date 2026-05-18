@@ -1,11 +1,8 @@
 from util import inputint, inputfloat, gerar_palavra
-from rich.console import Console
 import random
 '''
 Lista de Exercícios referentes a coleções e arquivos em python
 '''
-
-console = Console()
 
 #1. Faça um programa que armazene 15 números inteiros em uma lista e depois
 #permita que o usuário digite um número inteiro para ser buscado na lista, se
@@ -267,12 +264,74 @@ def q9():
 #Imprimir o maior e o menor, sem ordenar, o percentual de números pares e a
 #média dos elementos da lista.
 def q10():
-    lista1 = list(random.randint(1, 16), 10)
+    lista1 = [random.randint(1, 12) for _ in range(10)]
+    lista2 = []
 
+    for num in lista1:
+        if num == 0 or num == 1:
+            fatorial = 1
+        else:
+            fatorial = 1
+            for i in range (2, num + 1):
+                fatorial *= i
+        lista2.append(fatorial)
+    
+    maior = lista2[0]
+    menor = lista2[0]
+    soma = 0
+    pares = 0
+
+    for num in lista2:
+        soma += num  
+
+        if num > maior:
+            maior = num
+        if num < menor:
+            menor = num
+
+        if num % 2 == 0:
+            pares += 1
+
+    media = soma / len(lista2)
+    ppares = (pares / len(lista2)) * 100
+
+    print(f"Lista Original: {lista1}")
+    print(f"Lista Resultado (Fatoriais): {lista2}")
+    print(f"Maior elemento: {maior}")
+    print(f"Menor elemento: {menor}")
+    print(f"Percentual de números pares: {ppares}%")
+    print(f"Média dos elementos:         {media:.2f}")
     
 
 #11. Imprimir o maior e o menor, sem ordenar, o percentual de números pares e a
 #média dos elementos da lista.
+def q11():
+    lista1 = [random.randint(1, 12) for _ in range(10)]
+
+    maior = lista1[0]
+    menor = lista1[0]
+    soma = 0
+    pares = 0
+
+    for num in lista1:
+        soma += num  
+
+        if num > maior:
+            maior = num
+        if num < menor:
+            menor = num
+
+        if num % 2 == 0:
+            pares += 1
+
+    media = soma / len(lista1)
+    ppares = (pares / len(lista1)) * 100
+
+    print(f"Lista Original: {lista1}")
+    print(f"Maior elemento: {maior}")
+    print(f"Menor elemento: {menor}")
+    print(f"Percentual de números pares: {ppares}%")
+    print(f"Média dos elementos:         {media:.2f}")
 
 #12. Crie um programa para gerenciar um sistema de reservas de mesas em uma casa
 #de espetáculo. A casa possui 30 mesas de 5 lugares cada. O programa deverá
@@ -282,6 +341,59 @@ def q10():
 #emitir uma mensagem. O programa deve terminar quando o usuário digitar
 #o código 0 (zero) para uma mesa ou quando todos os 150 lugares estiverem
 #ocupados.
+def q12():
+
+    mesas = [5] * 30
+    lugaresD = 150
+
+    print('RESERVA DE MESAS\n')
+    print('30 mesas disponíveis com 5 lugares cada.')
+    print('Digite 0 para sair.')
+
+    while lugaresD > 0:
+        try:
+            numMesa = int(input("Informe o número da mesa desejada(1 a 30): "))
+        except ValueError:
+            print("Valor Inválido! Informe um número inteiro.")
+            continue
+        
+        if numMesa == 0:
+            print("Programa Encerrado.")
+            break
+
+        if numMesa < 1 or numMesa > 30:
+            print("Código inválido! Escolha uma mesa entre 1 e 30.\n")
+            continue
+
+        index = numMesa - 1
+
+        if mesas[index] == 0:
+            print(f'Desculpe, a Mesa {numMesa} está lotada!\n')
+            continue
+
+        try: 
+            lDesejados = int(input(f'Quantidade de lugares desejados? (Disponíveis nesta mesa: {mesas[index]}): '))
+        except ValueError:
+            print("Por favor, digite uma quantidade válida.\n")
+            continue
+
+        if lDesejados <= 0:
+            print("A quantidade de lugares desejados deve ser maior que 0.\n")
+            continue
+
+        if lDesejados <= mesas[index]:
+            mesas[index] -= lDesejados
+            lugaresD -= lDesejados
+
+            print(f"\nReserva realizada com sucesso na Mesa {numMesa}!")
+            print(f"Lugares restantes nesta mesa: {mesas[index]}")
+            print(f"Total de lugares restantes na casa: {lugaresD}\n")
+        else:
+            print(f"Não foi possível realizar a reserva.")
+            print(f"Você pediu {lDesejados} lugar(es), mas a Mesa {numMesa} só tem {mesas[index]} disponível(is).\n")  
+
+    if lugaresD == 0:
+        print("\nSessão encerrada: Todos os 150 lugares da casa estão ocupados!")
 
 #13. Construa um programa que realize as reservas de passagens áreas de uma companhia.
 #O programa deve permitir cadastrar o número de 10 voos e definir a
